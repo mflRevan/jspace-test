@@ -108,10 +108,16 @@ def paired_forms(tok, a: str, b: str, *, max_pairs: int = 4) -> tuple[list[int],
     the i-th id of each list is the same casing/spacing variant (e.g.
     ``" spider"``/``" ant"``, ``"Spider"``/``"Ant"``). Forms that are single
     tokens for only one of the words are dropped."""
+    variants = (
+        lambda w: " " + w,
+        lambda w: w,
+        lambda w: " " + w[:1].upper() + w[1:],
+        lambda w: w[:1].upper() + w[1:],
+    )
     src, tgt = [], []
-    for fa, fb in zip(surface_forms(a), surface_forms(b), strict=False):
-        ea = tok.encode(fa, add_special_tokens=False)
-        eb = tok.encode(fb, add_special_tokens=False)
+    for v in variants:
+        ea = tok.encode(v(a.strip().lower()), add_special_tokens=False)
+        eb = tok.encode(v(b.strip().lower()), add_special_tokens=False)
         if len(ea) == 1 and len(eb) == 1 and ea[0] not in src and eb[0] not in tgt and ea[0] != eb[0]:
             src.append(ea[0])
             tgt.append(eb[0])

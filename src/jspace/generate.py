@@ -86,3 +86,25 @@ def _default_stops(lm: LensedModel) -> set[int]:
         if isinstance(t, int) and t >= 0:
             stops.add(t)
     return stops
+
+
+@torch.no_grad()
+def continuation_logprobs(
+    lm: LensedModel, prompt: torch.Tensor | str, continuations: list[str], edits: Iterable[Edit] = ()
+) -> list[float]:
+    """Total log-prob of each continuation string given ``prompt`` with ``edits``
+    active at every position (prompt and continuation alike, i.e. clamped).
+
+    Scoring whole strings makes answers comparable across tokenizations (Qwen
+    splits " 8" into " " + "8" and "Basketball" into "Basket" + "ball")."""
+    if isinstance(prompt, str):
+        prompt = lm.encode(prompt)
+    n = prompt.shape[0]
+    out = []
+    with Intervene(lm, edits):
+        for cont in continuations:
+            c = torch.tensor(lm.tok.encode(cont, add_special_tokens=False), device=lm.device)
+            ids = torch.cat([prompt, c])[None]
+            lp = lm.hf(input_ids=ids, use_cache=False).logits[0, n - 1 : -1].float().log_softmax(-1)
+            out.append(float(lp.gather(1, c[:, None]).sum()))
+    return out
