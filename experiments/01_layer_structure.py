@@ -112,7 +112,7 @@ def plot(stats, geo, band, path, n_layers):
         ("excess_kurtosis", "(b) excess kurtosis of readout"),
         ("autocorr_logratio", "(c) top-1 autocorrelation vs null (log)"),
     ]
-    for ax, (k, title) in zip(axes[:3], panels):
+    for ax, (k, title) in zip(axes[:3], panels, strict=True):
         for m, c, lab in (("jacobian", SERIES[0], "J-lens"), ("logit", NEUTRAL, "logit lens")):
             ax.plot(x, stats[k][m], color=c, label=lab)
         shade_band(ax, band)

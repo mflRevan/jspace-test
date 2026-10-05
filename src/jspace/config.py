@@ -37,6 +37,15 @@ class ModelSpec:
     lenses: dict[str, LensSource]
     default_lens: str
     chat: bool  # post-trained (has a chat template we should use)
+    # Workspace band (inclusive layer range), measured by
+    # experiments/01_layer_structure.py; None until measured.
+    band: tuple[int, int] | None = None
+
+    @property
+    def band_layers(self) -> list[int]:
+        if self.band is None:
+            raise ValueError(f"no workspace band measured for {self.key}")
+        return list(range(self.band[0], self.band[1] + 1))
 
 
 MODELS: dict[str, ModelSpec] = {
@@ -60,6 +69,7 @@ MODELS: dict[str, ModelSpec] = {
         },
         default_lens="np-n1000",
         chat=True,
+        band=(17, 27),  # results/01_layer_structure/qwen3.5-4b
     ),
     "qwen3.5-4b-base": ModelSpec(
         key="qwen3.5-4b-base",
