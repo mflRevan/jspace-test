@@ -1,0 +1,1352 @@
+{
+ "meta": {
+  "git_commit": "54c0cd98d6e076e94eea0e3b4851d382a1e76280",
+  "git_dirty": true,
+  "time_utc": "2026-10-05T19:53:14Z",
+  "python": "3.12.3",
+  "packages": {
+   "torch": "2.11.0+cu128",
+   "transformers": "5.18.0",
+   "jlens": "0.1.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "model": {
+   "hf_id": "Qwen/Qwen3.5-4B",
+   "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+  },
+  "lens": {
+   "key": "np-n1000",
+   "source": "LensSource(hub=('neuronpedia/jacobian-lens', '16a01f309fcec900fdcec3f4cd5b64f3d00e4d5a', 'qwen3.5-4b/jlens/Salesforce-wikitext/Qwen3.5-4B_jacobian_lens_n1000.pt'), local=None, note='Neuronpedia fit with the jlens reference implementation, n=1000.')"
+  },
+  "args": {
+   "model": "qwen3.5-4b",
+   "lens": null,
+   "max_targets": 10
+  }
+ },
+ "summary": {
+  "spearman_median": {
+   "17": 0.45925221538544414,
+   "22": 0.5167363182437782,
+   "27": 0.6879120879120879
+  },
+  "swap_strict": 0.19642857142857142,
+  "swap_lenient": 0.23214285714285715,
+  "swap_top5": 0.5357142857142857,
+  "n_trials": 56
+ },
+ "trials": [
+  {
+   "category": "country",
+   "answer": "France",
+   "target": "Egypt",
+   "rank_before": 10,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Egypt",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "country",
+   "answer": "France",
+   "target": "Peru",
+   "rank_before": 13,
+   "rank_after": 1,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Japan",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "country",
+   "answer": "France",
+   "target": "Kenya",
+   "rank_before": 11,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Kenya",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "country",
+   "answer": "France",
+   "target": "Norway",
+   "rank_before": 12,
+   "rank_after": 1,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Japan",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "color",
+   "answer": "Blue",
+   "target": "White",
+   "rank_before": 13,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "White",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "color",
+   "answer": "Blue",
+   "target": "Brown",
+   "rank_before": 11,
+   "rank_after": 1,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Red",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "color",
+   "answer": "Blue",
+   "target": "Gray",
+   "rank_before": 12,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Gray",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "color",
+   "answer": "Blue",
+   "target": "Silver",
+   "rank_before": 10,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Silver",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "fruit",
+   "answer": "Apple",
+   "target": "Lime",
+   "rank_before": 13,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Lime",
+   "n_form_pairs": 3
+  },
+  {
+   "category": "fruit",
+   "answer": "Apple",
+   "target": "Plum",
+   "rank_before": 12,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Plum",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "fruit",
+   "answer": "Apple",
+   "target": "Melon",
+   "rank_before": 11,
+   "rank_after": 4,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Banana",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "fruit",
+   "answer": "Apple",
+   "target": "Date",
+   "rank_before": 10,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Date",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "sport",
+   "answer": "Basketball",
+   "target": "Hockey",
+   "rank_before": 10,
+   "rank_after": 3,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Tennis",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "sport",
+   "answer": "Basketball",
+   "target": "Rugby",
+   "rank_before": 11,
+   "rank_after": 3,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Soccer",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "sport",
+   "answer": "Basketball",
+   "target": "Boxing",
+   "rank_before": 12,
+   "rank_after": 2,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Football",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "sport",
+   "answer": "Basketball",
+   "target": "Cycling",
+   "rank_before": 13,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Cycling",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "instrument",
+   "answer": "Piano",
+   "target": "Bass",
+   "rank_before": 10,
+   "rank_after": 9,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Guitar",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "instrument",
+   "answer": "Piano",
+   "target": "Organ",
+   "rank_before": 11,
+   "rank_after": 8,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Guitar",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "instrument",
+   "answer": "Piano",
+   "target": "Horn",
+   "rank_before": 12,
+   "rank_after": 11,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Flute",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "instrument",
+   "answer": "Piano",
+   "target": "Bell",
+   "rank_before": 13,
+   "rank_after": 13,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Piano",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "planet",
+   "answer": "Earth",
+   "target": "Pluto",
+   "rank_before": 11,
+   "rank_after": 7,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Earth",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "planet",
+   "answer": "Earth",
+   "target": "Moon",
+   "rank_before": 12,
+   "rank_after": 1,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Mars",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "planet",
+   "answer": "Earth",
+   "target": "Sun",
+   "rank_before": 13,
+   "rank_after": 2,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Terra",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "planet",
+   "answer": "Earth",
+   "target": "Eris",
+   "rank_before": 10,
+   "rank_after": 0,
+   "strict": false,
+   "lenient": true,
+   "swapped_text": "Erid",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "tree",
+   "answer": "Branch",
+   "target": "Cedar",
+   "rank_before": 12,
+   "rank_after": 4,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Roots",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "tree",
+   "answer": "Branch",
+   "target": "Cherry",
+   "rank_before": 10,
+   "rank_after": 1,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Wood",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "tree",
+   "answer": "Branch",
+   "target": "Ash",
+   "rank_before": 11,
+   "rank_after": 1,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Wood",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "tree",
+   "answer": "Branch",
+   "target": "Teak",
+   "rank_before": 13,
+   "rank_after": 2,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Wood",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "bird",
+   "answer": "Eagle",
+   "target": "Cardinal",
+   "rank_before": 13,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Cardinal",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "bird",
+   "answer": "Eagle",
+   "target": "Duck",
+   "rank_before": 11,
+   "rank_after": 5,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Eagle",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "bird",
+   "answer": "Eagle",
+   "target": "Goose",
+   "rank_before": 12,
+   "rank_after": 10,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Eagle",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "bird",
+   "answer": "Eagle",
+   "target": "Raven",
+   "rank_before": 10,
+   "rank_after": 6,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Eagle",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "language",
+   "answer": "English",
+   "target": "Korean",
+   "rank_before": 10,
+   "rank_after": 6,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Klingon",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "language",
+   "answer": "English",
+   "target": "Italian",
+   "rank_before": 12,
+   "rank_after": 4,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Simplicial",
+   "n_form_pairs": 3
+  },
+  {
+   "category": "language",
+   "answer": "English",
+   "target": "Hindi",
+   "rank_before": 11,
+   "rank_after": 11,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Klingon",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "language",
+   "answer": "English",
+   "target": "Dutch",
+   "rank_before": 13,
+   "rank_after": 10,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Klingon",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "profession",
+   "answer": "Doctor",
+   "target": "Farmer",
+   "rank_before": 11,
+   "rank_after": 0,
+   "strict": true,
+   "lenient": true,
+   "swapped_text": "Farmer",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "profession",
+   "answer": "Doctor",
+   "target": "Actor",
+   "rank_before": 12,
+   "rank_after": 0,
+   "strict": false,
+   "lenient": true,
+   "swapped_text": "Engineer",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "profession",
+   "answer": "Doctor",
+   "target": "Banker",
+   "rank_before": 13,
+   "rank_after": 8,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Engineer",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "profession",
+   "answer": "Doctor",
+   "target": "Dentist",
+   "rank_before": 10,
+   "rank_after": 9,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Doctor",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "beverage",
+   "answer": "Water",
+   "target": "Vodka",
+   "rank_before": 10,
+   "rank_after": 12,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Water",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "beverage",
+   "answer": "Water",
+   "target": "Rum",
+   "rank_before": 13,
+   "rank_after": 13,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Tea",
+   "n_form_pairs": 3
+  },
+  {
+   "category": "beverage",
+   "answer": "Water",
+   "target": "Gin",
+   "rank_before": 11,
+   "rank_after": 11,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Water",
+   "n_form_pairs": 3
+  },
+  {
+   "category": "beverage",
+   "answer": "Water",
+   "target": "Cider",
+   "rank_before": 12,
+   "rank_after": 13,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Water",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "organ",
+   "answer": "Heart",
+   "target": "Skin",
+   "rank_before": 10,
+   "rank_after": 4,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Liver",
+   "n_form_pairs": 4
+  },
+  {
+   "category": "organ",
+   "answer": "Heart",
+   "target": "Muscle",
+   "rank_before": 13,
+   "rank_after": 9,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Liver",
+   "n_form_pairs": 2
+  },
+  {
+   "category": "organ",
+   "answer": "Heart",
+   "target": "Tongue",
+   "rank_before": 11,
+   "rank_after": 8,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Liver",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "organ",
+   "answer": "Heart",
+   "target": "Nose",
+   "rank_before": 12,
+   "rank_after": 8,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Liver",
+   "n_form_pairs": 3
+  },
+  {
+   "category": "city",
+   "answer": "Tokyo",
+   "target": "Lima",
+   "rank_before": 13,
+   "rank_after": 9,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Paris",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "city",
+   "answer": "Tokyo",
+   "target": "Dublin",
+   "rank_before": 11,
+   "rank_after": 8,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Paris",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "city",
+   "answer": "Tokyo",
+   "target": "Athens",
+   "rank_before": 12,
+   "rank_after": 9,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Paris",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "city",
+   "answer": "Tokyo",
+   "target": "Seoul",
+   "rank_before": 10,
+   "rank_after": 6,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Paris",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "river",
+   "answer": "Flow",
+   "target": "Thames",
+   "rank_before": 11,
+   "rank_after": 9,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Water",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "river",
+   "answer": "Flow",
+   "target": "Ganges",
+   "rank_before": 13,
+   "rank_after": 6,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Water",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "river",
+   "answer": "Flow",
+   "target": "Tiber",
+   "rank_before": 10,
+   "rank_after": 1,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Water",
+   "n_form_pairs": 1
+  },
+  {
+   "category": "river",
+   "answer": "Flow",
+   "target": "Yukon",
+   "rank_before": 12,
+   "rank_after": 4,
+   "strict": false,
+   "lenient": false,
+   "swapped_text": "Water",
+   "n_form_pairs": 1
+  }
+ ],
+ "examples": [
+  {
+   "category": "country",
+   "clean": "France",
+   "lens_top_last_band_layer": [
+    [
+     " France",
+     -0.7939488887786865
+    ],
+    [
+     " USA",
+     -1.5439488887786865
+    ],
+    [
+     "USA",
+     -2.7939488887786865
+    ],
+    [
+     " Japan",
+     -2.9189488887786865
+    ],
+    [
+     "France",
+     -3.1689488887786865
+    ],
+    [
+     " Brazil",
+     -3.5439488887786865
+    ],
+    [
+     " Canada",
+     -3.6689488887786865
+    ],
+    [
+     " China",
+     -3.9189488887786865
+    ],
+    [
+     " Germany",
+     -4.043949127197266
+    ],
+    [
+     " India",
+     -4.168949127197266
+    ]
+   ]
+  },
+  {
+   "category": "color",
+   "clean": "Blue",
+   "lens_top_last_band_layer": [
+    [
+     " blue",
+     -0.1146431714296341
+    ],
+    [
+     "blue",
+     -2.989643096923828
+    ],
+    [
+     " Blue",
+     -3.364643096923828
+    ],
+    [
+     "Blue",
+     -4.489643096923828
+    ],
+    [
+     "蓝色",
+     -4.739643096923828
+    ],
+    [
+     "-blue",
+     -6.489643096923828
+    ],
+    [
+     "蓝",
+     -6.739643096923828
+    ],
+    [
+     " BLUE",
+     -8.614643096923828
+    ],
+    [
+     "蓝色的",
+     -8.864643096923828
+    ],
+    [
+     "藍",
+     -9.239643096923828
+    ]
+   ]
+  },
+  {
+   "category": "fruit",
+   "clean": "Apple",
+   "lens_top_last_band_layer": [
+    [
+     " apple",
+     -0.7824429869651794
+    ],
+    [
+     "Apple",
+     -1.6574430465698242
+    ],
+    [
+     "apple",
+     -1.6574430465698242
+    ],
+    [
+     " Apple",
+     -2.282443046569824
+    ],
+    [
+     "苹果",
+     -3.282443046569824
+    ],
+    [
+     " apples",
+     -4.282443046569824
+    ],
+    [
+     " APPLE",
+     -6.157443046569824
+    ],
+    [
+     "苹果的",
+     -6.907443046569824
+    ],
+    [
+     "/apple",
+     -7.032443046569824
+    ],
+    [
+     "APPLE",
+     -7.282443046569824
+    ]
+   ]
+  },
+  {
+   "category": "sport",
+   "clean": "Basketball",
+   "lens_top_last_band_layer": [
+    [
+     " basketball",
+     -1.4892683029174805
+    ],
+    [
+     " Soccer",
+     -1.6142683029174805
+    ],
+    [
+     " soccer",
+     -1.6142683029174805
+    ],
+    [
+     " football",
+     -2.1142683029174805
+    ],
+    [
+     " Basketball",
+     -2.2392683029174805
+    ],
+    [
+     " Football",
+     -3.2392683029174805
+    ],
+    [
+     " Tennis",
+     -3.7392683029174805
+    ],
+    [
+     " tennis",
+     -3.8642683029174805
+    ],
+    [
+     "篮球",
+     -4.2392683029174805
+    ],
+    [
+     "足球",
+     -4.3642683029174805
+    ]
+   ]
+  },
+  {
+   "category": "instrument",
+   "clean": "Piano",
+   "lens_top_last_band_layer": [
+    [
+     " piano",
+     -0.2612529397010803
+    ],
+    [
+     " Piano",
+     -2.3862528800964355
+    ],
+    [
+     "钢琴",
+     -2.6362528800964355
+    ],
+    [
+     " guitar",
+     -3.7612528800964355
+    ],
+    [
+     " violin",
+     -4.1362528800964355
+    ],
+    [
+     " Guitar",
+     -4.3862528800964355
+    ],
+    [
+     " pian",
+     -4.3862528800964355
+    ],
+    [
+     "琴",
+     -7.1362528800964355
+    ],
+    [
+     "吉他",
+     -8.386253356933594
+    ],
+    [
+     " flute",
+     -8.761253356933594
+    ]
+   ]
+  },
+  {
+   "category": "planet",
+   "clean": "Earth",
+   "lens_top_last_band_layer": [
+    [
+     " Earth",
+     -0.16951514780521393
+    ],
+    [
+     "Earth",
+     -2.6695151329040527
+    ],
+    [
+     " Planet",
+     -3.5445151329040527
+    ],
+    [
+     " planet",
+     -3.7945151329040527
+    ],
+    [
+     "地球",
+     -4.419515132904053
+    ],
+    [
+     " Mars",
+     -4.544515132904053
+    ],
+    [
+     " earth",
+     -5.419515132904053
+    ],
+    [
+     " Jupiter",
+     -6.669515132904053
+    ],
+    [
+     " planets",
+     -6.919515132904053
+    ],
+    [
+     "Planet",
+     -6.919515132904053
+    ]
+   ]
+  },
+  {
+   "category": "tree",
+   "clean": "Branch",
+   "lens_top_last_band_layer": [
+    [
+     " branches",
+     -0.9286087155342102
+    ],
+    [
+     "树枝",
+     -2.6786086559295654
+    ],
+    [
+     " Tree",
+     -2.6786086559295654
+    ],
+    [
+     "枝",
+     -2.9286086559295654
+    ],
+    [
+     " bark",
+     -3.4286086559295654
+    ],
+    [
+     " Branch",
+     -3.5536086559295654
+    ],
+    [
+     " wood",
+     -3.5536086559295654
+    ],
+    [
+     " tree",
+     -3.6786086559295654
+    ],
+    [
+     " Trees",
+     -3.6786086559295654
+    ],
+    [
+     " roots",
+     -3.8036086559295654
+    ]
+   ]
+  },
+  {
+   "category": "bird",
+   "clean": "Eagle",
+   "lens_top_last_band_layer": [
+    [
+     " bird",
+     -0.5501977205276489
+    ],
+    [
+     " Bird",
+     -2.1751976013183594
+    ],
+    [
+     " eagle",
+     -2.3001976013183594
+    ],
+    [
+     "bird",
+     -2.9251976013183594
+    ],
+    [
+     " pigeon",
+     -3.6751976013183594
+    ],
+    [
+     " birds",
+     -3.8001976013183594
+    ],
+    [
+     " feather",
+     -3.9251976013183594
+    ],
+    [
+     "Bird",
+     -4.175197601318359
+    ],
+    [
+     " Birds",
+     -4.300197601318359
+    ],
+    [
+     " Eagle",
+     -4.550197601318359
+    ]
+   ]
+  },
+  {
+   "category": "language",
+   "clean": "English",
+   "lens_top_last_band_layer": [
+    [
+     " English",
+     -0.4170944392681122
+    ],
+    [
+     "English",
+     -2.6670944690704346
+    ],
+    [
+     " Mandarin",
+     -3.2920944690704346
+    ],
+    [
+     " Language",
+     -3.7920944690704346
+    ],
+    [
+     " Spanish",
+     -3.7920944690704346
+    ],
+    [
+     "英语",
+     -4.0420942306518555
+    ],
+    [
+     " Hindi",
+     -4.1670942306518555
+    ],
+    [
+     "汉语",
+     -4.1670942306518555
+    ],
+    [
+     " Arabic",
+     -4.4170942306518555
+    ],
+    [
+     " english",
+     -4.5420942306518555
+    ]
+   ]
+  },
+  {
+   "category": "profession",
+   "clean": "Doctor",
+   "lens_top_last_band_layer": [
+    [
+     "医生",
+     -0.9565144777297974
+    ],
+    [
+     " doctor",
+     -1.5815144777297974
+    ],
+    [
+     " engineer",
+     -2.081514358520508
+    ],
+    [
+     " surgeon",
+     -2.206514358520508
+    ],
+    [
+     " physician",
+     -2.956514358520508
+    ],
+    [
+     " Doctor",
+     -3.956514358520508
+    ],
+    [
+     " Engineer",
+     -3.956514358520508
+    ],
+    [
+     " doctors",
+     -3.956514358520508
+    ],
+    [
+     "医生的",
+     -4.081514358520508
+    ],
+    [
+     "工程师",
+     -4.581514358520508
+    ]
+   ]
+  },
+  {
+   "category": "beverage",
+   "clean": "Water",
+   "lens_top_last_band_layer": [
+    [
+     " Cola",
+     -1.1789751052856445
+    ],
+    [
+     " Soda",
+     -2.1789751052856445
+    ],
+    [
+     " Coffee",
+     -2.3039751052856445
+    ],
+    [
+     " Coca",
+     -2.4289751052856445
+    ],
+    [
+     " soda",
+     -2.8039751052856445
+    ],
+    [
+     "coffee",
+     -3.1789751052856445
+    ],
+    [
+     " Coke",
+     -3.3039751052856445
+    ],
+    [
+     " beer",
+     -3.3039751052856445
+    ],
+    [
+     " coffee",
+     -3.6789751052856445
+    ],
+    [
+     " Water",
+     -3.8039751052856445
+    ]
+   ]
+  },
+  {
+   "category": "organ",
+   "clean": "Heart",
+   "lens_top_last_band_layer": [
+    [
+     " lungs",
+     -0.9473454356193542
+    ],
+    [
+     " liver",
+     -1.572345495223999
+    ],
+    [
+     " Heart",
+     -2.322345495223999
+    ],
+    [
+     " Liver",
+     -2.322345495223999
+    ],
+    [
+     " heart",
+     -2.322345495223999
+    ],
+    [
+     " lung",
+     -3.197345495223999
+    ],
+    [
+     "Heart",
+     -4.07234525680542
+    ],
+    [
+     "肝脏",
+     -4.07234525680542
+    ],
+    [
+     "Liver",
+     -4.57234525680542
+    ],
+    [
+     "heart",
+     -5.19734525680542
+    ]
+   ]
+  },
+  {
+   "category": "city",
+   "clean": "Tokyo",
+   "lens_top_last_band_layer": [
+    [
+     " Paris",
+     -1.0620944499969482
+    ],
+    [
+     " Tokyo",
+     -1.4370944499969482
+    ],
+    [
+     " London",
+     -1.4370944499969482
+    ],
+    [
+     "London",
+     -2.6870944499969482
+    ],
+    [
+     "Paris",
+     -2.9370944499969482
+    ],
+    [
+     " NYC",
+     -3.8120944499969482
+    ],
+    [
+     " Berlin",
+     -4.062094688415527
+    ],
+    [
+     " Chicago",
+     -5.812094688415527
+    ],
+    [
+     " Madrid",
+     -6.312094688415527
+    ],
+    [
+     "Berlin",
+     -6.687094688415527
+    ]
+   ]
+  },
+  {
+   "category": "river",
+   "clean": "Flow",
+   "lens_top_last_band_layer": [
+    [
+     " flow",
+     -0.7531026601791382
+    ],
+    [
+     " Flow",
+     -1.1281026601791382
+    ],
+    [
+     " flowing",
+     -2.3781027793884277
+    ],
+    [
+     "flow",
+     -3.3781027793884277
+    ],
+    [
+     " flows",
+     -3.5031027793884277
+    ],
+    [
+     "Flow",
+     -3.6281027793884277
+    ],
+    [
+     "流动",
+     -5.003102779388428
+    ],
+    [
+     " flowed",
+     -5.503102779388428
+    ],
+    [
+     "-flow",
+     -5.878102779388428
+    ],
+    [
+     "水流",
+     -6.003102779388428
+    ]
+   ]
+  }
+ ],
+ "spearman": {
+  "17": [
+   0.8568302723498215,
+   0.4405297030076203,
+   0.3406593406593406,
+   0.644664856547017,
+   0.6879120879120879,
+   0.5852588800051418,
+   0.18701881503923706,
+   0.07692307692307693,
+   0.477974727763268,
+   0.3010989010989011,
+   0.2879120879120879,
+   0.7934065934065934,
+   0.5648351648351648,
+   -0.23076923076923075
+  ],
+  "22": [
+   0.7634768096307677,
+   0.37183740872507126,
+   0.6351648351648352,
+   0.7494505494505495,
+   0.8294834502328513,
+   0.5736263736263736,
+   0.3098901098901099,
+   0.22637362637362637,
+   0.3740376300784741,
+   0.4598462628611828,
+   0.29042921864916815,
+   0.6776681768480589,
+   0.6087912087912088,
+   0.4197802197802198
+  ],
+  "27": [
+   0.8769230769230769,
+   0.6879120879120879,
+   0.7766781377511844,
+   0.7722776950443788,
+   0.8417582417582418,
+   0.6776681768480589,
+   0.47252747252747257,
+   0.2527472527472528,
+   0.6703296703296703,
+   0.6842688409082672,
+   0.8153846153846154,
+   0.6879120879120879,
+   0.8392090842295168,
+   0.5692307692307692
+  ]
+ }
+}

@@ -1,0 +1,322 @@
+{
+ "meta": {
+  "git_commit": "54c0cd98d6e076e94eea0e3b4851d382a1e76280",
+  "git_dirty": true,
+  "time_utc": "2026-10-05T20:00:15Z",
+  "python": "3.12.3",
+  "packages": {
+   "torch": "2.11.0+cu128",
+   "transformers": "5.18.0",
+   "jlens": "0.1.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "model": {
+   "hf_id": "Qwen/Qwen3.5-4B",
+   "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+  },
+  "lens": {
+   "key": "np-n1000",
+   "source": "LensSource(hub=('neuronpedia/jacobian-lens', '16a01f309fcec900fdcec3f4cd5b64f3d00e4d5a', 'qwen3.5-4b/jlens/Salesforce-wikitext/Qwen3.5-4B_jacobian_lens_n1000.pt'), local=None, note='Neuronpedia fit with the jlens reference implementation, n=1000.')"
+  },
+  "args": {
+   "model": "qwen3.5-4b",
+   "lens": null,
+   "n_passages": 32,
+   "seed": 0
+  }
+ },
+ "ranges": {
+  "light": [
+   17,
+   20
+  ],
+  "medium": [
+   17,
+   23
+  ],
+  "heavy": [
+   17,
+   27
+  ]
+ },
+ "n_items_kept": 53,
+ "multihop_accuracy": {
+  "clean": 1.0,
+  "light": 0.7169811320754716,
+  "medium": 0.5094339622641509,
+  "heavy": 0.1509433962264151,
+  "random": 0.9622641509433962
+ },
+ "wikitext_top1_agreement": {
+  "light": 0.7336054090410471,
+  "medium": 0.6323777139186859,
+  "heavy": 0.5241327891126275,
+  "random": 0.9458828251808882
+ },
+ "examples": [
+  {
+   "prompt": "Fact: The hard covering on the back of the slow reptile that can pull its head inside its body is called a",
+   "answer": "shell",
+   "intermediate": "turtle",
+   "text_clean": " shell.\nHypothesis: The",
+   "text_light": " shell.\nQuestion: The hard covering",
+   "text_medium": " scute.\nA. Tenoch",
+   "text_heavy": " capnthemum.\nPup",
+   "text_random": " shell.\nHypothesis: The",
+   "ablated_at_final_L20": [
+    "cloak",
+    "toga",
+    "封闭",
+    "enk",
+    "cic",
+    "封闭式",
+    "闭关",
+    "�",
+    "preh",
+    "休眠"
+   ]
+  },
+  {
+   "prompt": "Fact: The color of the long-necked bird in the famous Tchaikovsky ballet is",
+   "answer": "white",
+   "intermediate": "swan",
+   "text_clean": " white.\nHypothesis: The",
+   "text_light": " white.\nQuestion: What color is",
+   "text_medium": " Peacock.\nQuestion: The long",
+   "text_heavy": " Peoria.\n 1. The",
+   "text_random": " white.\nHypothesis: The",
+   "ablated_at_final_L20": [
+    "blond",
+    "黄色",
+    "myster",
+    "红色",
+    "blonde",
+    "通常为",
+    "Scarlet",
+    "fictional",
+    "alb",
+    "crimson"
+   ]
+  },
+  {
+   "prompt": "Fact: Emerald is the birthstone for month number ",
+   "answer": "5",
+   "intermediate": "May",
+   "text_clean": "5.\nQuestion: Which month is",
+   "text_light": "3.\nQuestion: Which month is",
+   "text_medium": "3.\nQuestion: emerald is",
+   "text_heavy": "3.\nMount 101",
+   "text_random": "5.\nQuestion: Which month is",
+   "ablated_at_final_L20": [
+    "七月",
+    "六月",
+    "Juin",
+    "nymph",
+    "五月",
+    "eden",
+    "lapis",
+    "闰",
+    "velvet",
+    "august"
+   ]
+  },
+  {
+   "prompt": "Fact: The currency used in the country where the Colosseum stands is the ",
+   "answer": "Euro",
+   "intermediate": "Italy",
+   "text_clean": " euro.\nQuestion: The currency used",
+   "text_light": " euro .\nQuestion: The currency used",
+   "text_medium": " euro .\nQuestion: The currency used",
+   "text_heavy": "500 lira note.\n",
+   "text_random": " euro.\nHypothesis: The",
+   "ablated_at_final_L20": [
+    "Keb",
+    "iran",
+    "血型",
+    "Rup",
+    "纸币",
+    "普通话",
+    "Boliv",
+    "jahr",
+    "emoji",
+    "Bande"
+   ]
+  },
+  {
+   "prompt": "Fact: Counting Monday as day 1, the day of the week named after the Norse goddess Frigg is day number ",
+   "answer": "5",
+   "intermediate": "Friday",
+   "text_clean": "5.\nHypothesis: The",
+   "text_light": "4.\nTasmanian dev",
+   "text_medium": "10.\nTense: Sh",
+   "text_heavy": "12.\n 100",
+   "text_random": "5.\nQuestion: What day of",
+   "ablated_at_final_L20": [
+    "Lundi",
+    "Friday",
+    "roma",
+    "aran",
+    "Wednesday",
+    "Fridays",
+    "周三",
+    "Carnaval",
+    "五天",
+    "Romance"
+   ]
+  },
+  {
+   "prompt": "Fact: The capital of the country where Lyon is located is",
+   "answer": "Paris",
+   "intermediate": "France",
+   "text_clean": " Paris.\nHypothesis: Lyon",
+   "text_light": " Paris.\nQuestion: The capital of",
+   "text_medium": " Paris.\nA. Paris is the",
+   "text_heavy": " FRA.\nA. The F",
+   "text_random": " Paris.\nHypothesis: Lyon",
+   "ablated_at_final_L20": [
+    "Marseille",
+    "Toulouse",
+    "France",
+    "Pierre",
+    "Mam",
+    "Palme",
+    "Francia",
+    "Macron",
+    "Alba",
+    "Bourbon"
+   ]
+  },
+  {
+   "prompt": "Fact: The capital of the country where Naples is located is",
+   "answer": "Rome",
+   "intermediate": "Italy",
+   "text_clean": " Rome.\nHypothesis: The",
+   "text_light": " London.\nQuestion: The capital of",
+   "text_medium": " London.\nA. Naples is in",
+   "text_heavy": " Peter Gr Evans.\nThe head of",
+   "text_random": " Rome.\nHypothesis: The",
+   "ablated_at_final_L20": [
+    "Liverpool",
+    "Hamp",
+    "Malta",
+    "Westminster",
+    "Mam",
+    "Traf",
+    "Polo",
+    "Alba",
+    "Tir",
+    "Mab"
+   ]
+  },
+  {
+   "prompt": "Fact: The capital of the country where Toronto is located is",
+   "answer": "Ottawa",
+   "intermediate": "Canada",
+   "text_clean": " Ottawa.\nHypothesis: Toronto",
+   "text_light": " Ottawa.\nQuestion: The capital of",
+   "text_medium": " Ottawa.\nQ: Did the capital",
+   "text_heavy": " Peter Harvin.\nThe capital of",
+   "text_random": " Ottawa.\nHypothesis: Toronto",
+   "ablated_at_final_L20": [
+    "Westminster",
+    "Belfast",
+    "سعد",
+    "Edinburgh",
+    "Hamp",
+    "Buckingham",
+    "Liverpool",
+    "Traf",
+    "Londres",
+    "Royaume"
+   ]
+  },
+  {
+   "prompt": "Fact: The continent of the country where Toronto is located is",
+   "answer": "North",
+   "intermediate": "Canada",
+   "text_clean": " North America.\nHypothesis:",
+   "text_light": " Europe.\nPremise: Toronto is",
+   "text_medium": " North America.\nA. Toronto is",
+   "text_heavy": " the North um.\n(The \"",
+   "text_random": " North America.\nHypothesis:",
+   "ablated_at_final_L20": [
+    "碳水",
+    "Northern",
+    "Royaume",
+    "Atlant",
+    "Romania",
+    "Plains",
+    "NORTH",
+    "ALSO",
+    "Madagascar",
+    "Terre"
+   ]
+  },
+  {
+   "prompt": "Fact: The currency used in the country where Toronto is located is the",
+   "answer": "Canadian",
+   "intermediate": "Canada",
+   "text_clean": " Canadian dollar.\nHypothesis:",
+   "text_light": " Canadian dollar.\nQuestion: The currency",
+   "text_medium": " pound.\nQuestion: The currency used",
+   "text_heavy": " Queen's Bankers Estimate.\n",
+   "text_random": " Canadian dollar.\nHypothesis:",
+   "ablated_at_final_L20": [
+    "英镑",
+    "普通话",
+    "粤语",
+    "Anglic",
+    "MasterCard",
+    "Anglo",
+    "Thames",
+    "Gael",
+    "Westminster",
+    "Icelandic"
+   ]
+  },
+  {
+   "prompt": "Fact: The currency used in the country where Toronto is located is the",
+   "answer": "Canadian",
+   "intermediate": "Canada",
+   "text_clean": " Canadian dollar.\nHypothesis:",
+   "text_light": " Canadian dollar.\nQuestion: The currency",
+   "text_medium": " pound.\nQuestion: The currency used",
+   "text_heavy": " Queen's Bankers Estimate.\n",
+   "text_random": " Canadian dollar.\nHypothesis:",
+   "ablated_at_final_L20": [
+    "英镑",
+    "普通话",
+    "粤语",
+    "Anglic",
+    "MasterCard",
+    "Anglo",
+    "Thames",
+    "Gael",
+    "Westminster",
+    "Icelandic"
+   ]
+  },
+  {
+   "prompt": "Fact: The language spoken in the country where Lyon is located is",
+   "answer": "French",
+   "intermediate": "France",
+   "text_clean": " French.\nHypothesis: The",
+   "text_light": " French.\nQuestion: The language spoken",
+   "text_medium": " French.\nQuestion: The language spoken",
+   "text_heavy": " a major French dialect.\nThe cl",
+   "text_random": " French.\nHypothesis: The",
+   "ablated_at_final_L20": [
+    "Gael",
+    "Romance",
+    "Macron",
+    "predominantly",
+    "Mi",
+    "bahasa",
+    "Franc",
+    "Fiat",
+    "Celtic",
+    "french"
+   ]
+  }
+ ]
+}
