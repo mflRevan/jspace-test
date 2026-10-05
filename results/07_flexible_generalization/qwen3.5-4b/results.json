@@ -1,0 +1,4097 @@
+{
+ "meta": {
+  "git_commit": "45c9f4c33402db89b2b660c32fdc8663ea2728ae",
+  "git_dirty": true,
+  "time_utc": "2026-10-05T20:11:10Z",
+  "python": "3.12.3",
+  "packages": {
+   "torch": "2.11.0+cu128",
+   "transformers": "5.18.0",
+   "jlens": "0.1.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "model": {
+   "hf_id": "Qwen/Qwen3.5-4B",
+   "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+  },
+  "lens": {
+   "key": "np-n1000",
+   "source": "LensSource(hub=('neuronpedia/jacobian-lens', '16a01f309fcec900fdcec3f4cd5b64f3d00e4d5a', 'qwen3.5-4b/jlens/Salesforce-wikitext/Qwen3.5-4B_jacobian_lens_n1000.pt'), local=None, note='Neuronpedia fit with the jlens reference implementation, n=1000.')"
+  },
+  "args": {
+   "model": "qwen3.5-4b",
+   "lens": null,
+   "alphas": [
+    1.0,
+    2.0
+   ]
+  }
+ },
+ "summary": {
+  "a1": {
+   "strict": 15,
+   "set": 38,
+   "degenerate": 0,
+   "n": 192,
+   "by_category": {
+    "countries": 13,
+    "months": 0,
+    "animals": 2,
+    "numbers": 0
+   }
+  },
+  "a2": {
+   "strict": 6,
+   "set": 109,
+   "degenerate": 140,
+   "n": 192,
+   "by_category": {
+    "countries": 0,
+    "months": 0,
+    "animals": 0,
+    "numbers": 6
+   }
+  },
+  "loading_vs_success_corr": 0.21119549885269906,
+  "mean_loading_by_category": {
+   "countries": 0.17356109009547668,
+   "months": 0.14395870200612326,
+   "animals": 0.16156536116349426,
+   "numbers": 0.10472870270975611
+  }
+ },
+ "trials": [
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "France",
+   "tgt": "Canada",
+   "clean": " Paris.\nA.",
+   "clean_correct": true,
+   "loading": 0.18822698430581528,
+   "a1": {
+    "text": " Paris.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Canada FranceCanada France Canada",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "France",
+   "tgt": "China",
+   "clean": " Paris.\nA.",
+   "clean_correct": true,
+   "loading": 0.18822698430581528,
+   "a1": {
+    "text": " Beijing.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " China France ChinaFrance Chinese",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "France",
+   "tgt": "Egypt",
+   "clean": " Paris.\nA.",
+   "clean_correct": true,
+   "loading": 0.18822698430581528,
+   "a1": {
+    "text": " Paris.\nThe capital",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt FranceEgypt FranceEgypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "Canada",
+   "tgt": "France",
+   "clean": " Ottawa.\nA.",
+   "clean_correct": true,
+   "loading": 0.19983256675980307,
+   "a1": {
+    "text": " Paris.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " FranceCanada FranceCanada france",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "Canada",
+   "tgt": "China",
+   "clean": " Ottawa.\nA.",
+   "clean_correct": true,
+   "loading": 0.19983256675980307,
+   "a1": {
+    "text": " Beijing.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " chinaCanada ChinaCanada China",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "Canada",
+   "tgt": "Egypt",
+   "clean": " Ottawa.\nA.",
+   "clean_correct": true,
+   "loading": 0.19983256675980307,
+   "a1": {
+    "text": " __________.\n\n<think>",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt Canada Egypt CanadaEgypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "China",
+   "tgt": "France",
+   "clean": " Beijing.\nA.",
+   "clean_correct": true,
+   "loading": 0.1953820599751039,
+   "a1": {
+    "text": " Beijing.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " France ChinaFrance ChinaFrance",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "China",
+   "tgt": "Canada",
+   "clean": " Beijing.\nA.",
+   "clean_correct": true,
+   "loading": 0.1953820599751039,
+   "a1": {
+    "text": " Beijing.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Canada ChinaCanada ChinaCanada",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "China",
+   "tgt": "Egypt",
+   "clean": " Beijing.\nA.",
+   "clean_correct": true,
+   "loading": 0.1953820599751039,
+   "a1": {
+    "text": " Beijing.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt ChinaEgypt ChineseEgypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "Egypt",
+   "tgt": "France",
+   "clean": " Cairo. Cairo is located",
+   "clean_correct": true,
+   "loading": 0.19978981532833792,
+   "a1": {
+    "text": " Cairo.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " French Egypt FranceEgypt France",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "Egypt",
+   "tgt": "Canada",
+   "clean": " Cairo. Cairo is located",
+   "clean_correct": true,
+   "loading": 0.19978981532833792,
+   "a1": {
+    "text": " Cairo.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Canada EgyptCanadaEgypt Canada",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "capital",
+   "src": "Egypt",
+   "tgt": "China",
+   "clean": " Cairo. Cairo is located",
+   "clean_correct": true,
+   "loading": 0.19978981532833792,
+   "a1": {
+    "text": " Cairo.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " ChineseEgypt ChineseEgyptEgypt",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "France",
+   "tgt": "Canada",
+   "clean": " French, but there are",
+   "clean_correct": true,
+   "loading": 0.1683751940727234,
+   "a1": {
+    "text": " English.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Canada franceCanada franceCanada",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "France",
+   "tgt": "China",
+   "clean": " French, but there are",
+   "clean_correct": true,
+   "loading": 0.1683751940727234,
+   "a1": {
+    "text": " Chinese.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " China France ChinaFrance Chinese",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "France",
+   "tgt": "Egypt",
+   "clean": " French, but there are",
+   "clean_correct": true,
+   "loading": 0.1683751940727234,
+   "a1": {
+    "text": " a language called French.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Egypt France Egypt FranceEgypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "Canada",
+   "tgt": "France",
+   "clean": " English or French. What",
+   "clean_correct": true,
+   "loading": 0.17072002318772403,
+   "a1": {
+    "text": " French and English.\n",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " FranceCanada FranceCanada france",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "Canada",
+   "tgt": "China",
+   "clean": " English or French. What",
+   "clean_correct": true,
+   "loading": 0.17072002318772403,
+   "a1": {
+    "text": " English or Chinese.\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " ChinaCanada ChinaCanada China",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "Canada",
+   "tgt": "Egypt",
+   "clean": " English or French. What",
+   "clean_correct": true,
+   "loading": 0.17072002318772403,
+   "a1": {
+    "text": " English or French. What",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Egypt Canada Egypt Canada Egypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "China",
+   "tgt": "France",
+   "clean": " Chinese, but not all",
+   "clean_correct": true,
+   "loading": 0.1733819544315338,
+   "a1": {
+    "text": " a language called French.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " France ChinaFrance ChineseFrance",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "China",
+   "tgt": "Canada",
+   "clean": " Chinese, but not all",
+   "clean_correct": true,
+   "loading": 0.1733819544315338,
+   "a1": {
+    "text": " a language called ________.",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Canada ChinaCanada ChinaCanada",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "China",
+   "tgt": "Egypt",
+   "clean": " Chinese, but not all",
+   "clean_correct": true,
+   "loading": 0.1733819544315338,
+   "a1": {
+    "text": " a language called Mandarin.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Egypt ChinaEgypt ChineseEgypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "Egypt",
+   "tgt": "France",
+   "clean": " Arabic, but there are",
+   "clean_correct": true,
+   "loading": 0.16094139556993137,
+   "a1": {
+    "text": " French.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Egypt France Egypt FranceEgypt",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "Egypt",
+   "tgt": "Canada",
+   "clean": " Arabic, but there are",
+   "clean_correct": true,
+   "loading": 0.16094139556993137,
+   "a1": {
+    "text": " a language called Arabic.",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Canada EgyptCanada EgyptCanada",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "language",
+   "src": "Egypt",
+   "tgt": "China",
+   "clean": " Arabic, but there are",
+   "clean_correct": true,
+   "loading": 0.16094139556993137,
+   "a1": {
+    "text": " a dialect of the Arabic",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt ChinaEgypt ChineseEgypt",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "France",
+   "tgt": "Canada",
+   "clean": " Europe.\n==History",
+   "clean_correct": true,
+   "loading": 0.15636540949344635,
+   "a1": {
+    "text": " Europe.\n==History",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Canada FranceCanada france Canada",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "France",
+   "tgt": "China",
+   "clean": " Europe.\n==History",
+   "clean_correct": true,
+   "loading": 0.15636540949344635,
+   "a1": {
+    "text": " Europe.\n==History",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " china France China France China",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "France",
+   "tgt": "Egypt",
+   "clean": " Europe.\n==History",
+   "clean_correct": true,
+   "loading": 0.15636540949344635,
+   "a1": {
+    "text": " Europe.\n==History",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt FranceEgypt French Egypt",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "Canada",
+   "tgt": "France",
+   "clean": " North America. It is",
+   "clean_correct": true,
+   "loading": 0.16401915861801666,
+   "a1": {
+    "text": " Europe.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " FranceCanada FranceCanada France",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "Canada",
+   "tgt": "China",
+   "clean": " North America. It is",
+   "clean_correct": true,
+   "loading": 0.16401915861801666,
+   "a1": {
+    "text": " Asia.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " chinaCanada ChinaCanada China",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "Canada",
+   "tgt": "Egypt",
+   "clean": " North America. It is",
+   "clean_correct": true,
+   "loading": 0.16401915861801666,
+   "a1": {
+    "text": " Africa.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "EgyptCanadaEgypt CanadaEgypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "China",
+   "tgt": "France",
+   "clean": " Asia.\nA.",
+   "clean_correct": true,
+   "loading": 0.16055952215736563,
+   "a1": {
+    "text": " Europe.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " FranceChinaFrance ChineseFrance",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "China",
+   "tgt": "Canada",
+   "clean": " Asia.\nA.",
+   "clean_correct": true,
+   "loading": 0.16055952215736563,
+   "a1": {
+    "text": " Asia.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Canada ChinaCanada ChinaCanada",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "China",
+   "tgt": "Egypt",
+   "clean": " Asia.\nA.",
+   "clean_correct": true,
+   "loading": 0.16055952215736563,
+   "a1": {
+    "text": " Africa.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt ChinaEgypt ChineseEgypt",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "Egypt",
+   "tgt": "France",
+   "clean": " Africa. It is located",
+   "clean_correct": true,
+   "loading": 0.16176628050479022,
+   "a1": {
+    "text": " Africa. It is bordered",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt FranceEgypt FranceEgypt",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "Egypt",
+   "tgt": "Canada",
+   "clean": " Africa. It is located",
+   "clean_correct": true,
+   "loading": 0.16176628050479022,
+   "a1": {
+    "text": " Africa. It is bordered",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Canadian EgyptCanada EgyptCanada",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "countries",
+   "func": "continent",
+   "src": "Egypt",
+   "tgt": "China",
+   "clean": " Africa. It is located",
+   "clean_correct": true,
+   "loading": 0.16176628050479022,
+   "a1": {
+    "text": " Asia.\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt ChineseEgyptEgyptEgypt",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "France",
+   "tgt": "Canada",
+   "clean": " euro.\nA.",
+   "clean_correct": true,
+   "loading": 0.16123872182585977,
+   "a1": {
+    "text": ":\nA. Euro",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Canada FranceCanada franceCanada",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "France",
+   "tgt": "China",
+   "clean": " euro.\nA.",
+   "clean_correct": true,
+   "loading": 0.16123872182585977,
+   "a1": {
+    "text": ":\nA. Euro",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " ChinaFrance france ChineseFrance",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "France",
+   "tgt": "Egypt",
+   "clean": " euro.\nA.",
+   "clean_correct": true,
+   "loading": 0.16123872182585977,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt FranceEgypt FranceEgypt",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "Canada",
+   "tgt": "France",
+   "clean": ":\nA. dollar",
+   "clean_correct": false,
+   "loading": 0.17752721499313007,
+   "a1": {
+    "text": ":\nA. franc",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " FranceCanada franceCanada france",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "Canada",
+   "tgt": "China",
+   "clean": ":\nA. dollar",
+   "clean_correct": false,
+   "loading": 0.17752721499313007,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " ChinaCanadaCanada ChinaCanada",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "Canada",
+   "tgt": "Egypt",
+   "clean": ":\nA. dollar",
+   "clean_correct": false,
+   "loading": 0.17752721499313007,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt Canada Egypt Canada Egypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "China",
+   "tgt": "France",
+   "clean": " yuan.\nA.",
+   "clean_correct": true,
+   "loading": 0.17283840748396787,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "France ChinaFrance Chinese france",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "China",
+   "tgt": "Canada",
+   "clean": " yuan.\nA.",
+   "clean_correct": true,
+   "loading": 0.17283840748396787,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Canada ChinaCanada ChinaCanada",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "China",
+   "tgt": "Egypt",
+   "clean": " yuan.\nA.",
+   "clean_correct": true,
+   "loading": 0.17283840748396787,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt ChinaEgypt ChineseEgypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "Egypt",
+   "tgt": "France",
+   "clean": ":\nA. )",
+   "clean_correct": false,
+   "loading": 0.16601273282007736,
+   "a1": {
+    "text": ":\nA. franc",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt France Egypt Egypt French",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "Egypt",
+   "tgt": "Canada",
+   "clean": ":\nA. )",
+   "clean_correct": false,
+   "loading": 0.16601273282007736,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Canada EgyptCanada Egypt Egypt",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "countries",
+   "func": "currency",
+   "src": "Egypt",
+   "tgt": "China",
+   "clean": ":\nA. )",
+   "clean_correct": false,
+   "loading": 0.16601273282007736,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Egypt ChineseEgyptEgyptEgypt",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "February",
+   "tgt": "April",
+   "clean": " the year when the sun",
+   "clean_correct": false,
+   "loading": 0.13959243284030395,
+   "a1": {
+    "text": " the year when the sun",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "April February AprilFebruary April",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "February",
+   "tgt": "July",
+   "clean": " the year when the sun",
+   "clean_correct": false,
+   "loading": 0.13959243284030395,
+   "a1": {
+    "text": " the year when the sun",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July FebruaryJulyFebruaryJuly",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "February",
+   "tgt": "October",
+   "clean": " the year when the sun",
+   "clean_correct": false,
+   "loading": 0.13959243284030395,
+   "a1": {
+    "text": " the year when the sun",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " February OctFebruary OctFebruary",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "April",
+   "tgt": "February",
+   "clean": " spring.\nA.",
+   "clean_correct": true,
+   "loading": 0.14032736691561612,
+   "a1": {
+    "text": " spring.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " FebruaryAprilFebruary AprilFebruary",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "April",
+   "tgt": "July",
+   "clean": " spring.\nA.",
+   "clean_correct": true,
+   "loading": 0.14032736691561612,
+   "a1": {
+    "text": " spring.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July April July AprilJuly",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "April",
+   "tgt": "October",
+   "clean": " spring.\nA.",
+   "clean_correct": true,
+   "loading": 0.14032736691561612,
+   "a1": {
+    "text": " spring.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " April Oct AprilOctober April",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "July",
+   "tgt": "February",
+   "clean": ":\nA. Winter",
+   "clean_correct": false,
+   "loading": 0.12825847891244022,
+   "a1": {
+    "text": ":\nA. Winter",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " FebruaryJulyFebruaryJulyFebruary",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "July",
+   "tgt": "April",
+   "clean": ":\nA. Winter",
+   "clean_correct": false,
+   "loading": 0.12825847891244022,
+   "a1": {
+    "text": ":\nA. Winter",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " AprilJuly AprilJuly April",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "July",
+   "tgt": "October",
+   "clean": ":\nA. Winter",
+   "clean_correct": false,
+   "loading": 0.12825847891244022,
+   "a1": {
+    "text": ":\nA. Winter",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " July OctJulyOctoberJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "October",
+   "tgt": "February",
+   "clean": " autumn.\nA.",
+   "clean_correct": true,
+   "loading": 0.13779787719249725,
+   "a1": {
+    "text": ":\nA. Spring",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " February Oct FebruaryOct February",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "October",
+   "tgt": "April",
+   "clean": " autumn.\nA.",
+   "clean_correct": true,
+   "loading": 0.13779787719249725,
+   "a1": {
+    "text": " the year when the sun",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " April Oct AprilOctober April",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "season",
+   "src": "October",
+   "tgt": "July",
+   "clean": " autumn.\nA.",
+   "clean_correct": true,
+   "loading": 0.13779787719249725,
+   "a1": {
+    "text": ":\nA. Spring",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " July OctJulyOctoberJuly",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "February",
+   "tgt": "April",
+   "clean": " 2.\nCount",
+   "clean_correct": false,
+   "loading": 0.1413873867555098,
+   "a1": {
+    "text": " 2.\nCount",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "AprilFebruary April FebruaryApril",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "February",
+   "tgt": "July",
+   "clean": " 2.\nCount",
+   "clean_correct": false,
+   "loading": 0.1413873867555098,
+   "a1": {
+    "text": " 2.\nCount",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July FebruaryJuly FebruaryJuly",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "February",
+   "tgt": "October",
+   "clean": " 2.\nCount",
+   "clean_correct": false,
+   "loading": 0.1413873867555098,
+   "a1": {
+    "text": " 2.\nCount",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " OctFebruary Oct February Oct",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "April",
+   "tgt": "February",
+   "clean": " 4.\nA",
+   "clean_correct": false,
+   "loading": 0.14139153876087882,
+   "a1": {
+    "text": " 2.\nA",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "April FebruaryApril February April",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "April",
+   "tgt": "July",
+   "clean": " 4.\nA",
+   "clean_correct": false,
+   "loading": 0.14139153876087882,
+   "a1": {
+    "text": " 4.\nCount",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July AprilJuly AprilJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "April",
+   "tgt": "October",
+   "clean": " 4.\nA",
+   "clean_correct": false,
+   "loading": 0.14139153876087882,
+   "a1": {
+    "text": " 4.\nCount",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "April OctundlesApril Oct",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "July",
+   "tgt": "February",
+   "clean": " 7.\nA",
+   "clean_correct": false,
+   "loading": 0.14422522214325992,
+   "a1": {
+    "text": " 7.\nA",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July FebruaryJuly FebruaryJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "July",
+   "tgt": "April",
+   "clean": " 7.\nA",
+   "clean_correct": false,
+   "loading": 0.14422522214325992,
+   "a1": {
+    "text": " 7.\nA",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " apr July AprilJuly April",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "July",
+   "tgt": "October",
+   "clean": " 7.\nA",
+   "clean_correct": false,
+   "loading": 0.14422522214325992,
+   "a1": {
+    "text": " 7.\nA",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "JulyOctoberJuly OctJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "October",
+   "tgt": "February",
+   "clean": " 10.\n",
+   "clean_correct": false,
+   "loading": 0.133170448243618,
+   "a1": {
+    "text": " 10.\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " FronOctober FebruaryOct February",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "October",
+   "tgt": "April",
+   "clean": " 10.\n",
+   "clean_correct": false,
+   "loading": 0.133170448243618,
+   "a1": {
+    "text": " 10.\n",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "April OctOctober April oct",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "number",
+   "src": "October",
+   "tgt": "July",
+   "clean": " 10.\n",
+   "clean_correct": false,
+   "loading": 0.133170448243618,
+   "a1": {
+    "text": " 10.\n",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "JulyOctoberJulyOctoberJuly",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "February",
+   "tgt": "April",
+   "clean": " the Chinese New Year,",
+   "clean_correct": false,
+   "loading": 0.14902226491407913,
+   "a1": {
+    "text": " the Chinese New Year,",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " April FebruaryApril February April",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "February",
+   "tgt": "July",
+   "clean": " the Chinese New Year,",
+   "clean_correct": false,
+   "loading": 0.14902226491407913,
+   "a1": {
+    "text": " the\nA. Winter",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July FebruaryJuly FebruaryJuly",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "February",
+   "tgt": "October",
+   "clean": " the Chinese New Year,",
+   "clean_correct": false,
+   "loading": 0.14902226491407913,
+   "a1": {
+    "text": " the 201",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " octFebruaryOct February Oct",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "April",
+   "tgt": "February",
+   "clean": " Easter.\nA.",
+   "clean_correct": true,
+   "loading": 0.1511151451956142,
+   "a1": {
+    "text": " Easter.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "FebruaryApril FebruaryApril February",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "April",
+   "tgt": "July",
+   "clean": " Easter.\nA.",
+   "clean_correct": true,
+   "loading": 0.1511151451956142,
+   "a1": {
+    "text": " the\nA. Easter",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July AprilJuly AprilJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "April",
+   "tgt": "October",
+   "clean": " Easter.\nA.",
+   "clean_correct": true,
+   "loading": 0.1511151451956142,
+   "a1": {
+    "text": " the Easter holiday.\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " oct April OctOctober April",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "July",
+   "tgt": "February",
+   "clean": " the 4th of",
+   "clean_correct": false,
+   "loading": 0.14455781470645557,
+   "a1": {
+    "text": " the\nA. Winter",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July FebruaryJuly FebruaryJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "July",
+   "tgt": "April",
+   "clean": " the 4th of",
+   "clean_correct": false,
+   "loading": 0.14455781470645557,
+   "a1": {
+    "text": " the\nA. ",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July AprilJuly AprilJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "July",
+   "tgt": "October",
+   "clean": " the 4th of",
+   "clean_correct": false,
+   "loading": 0.14455781470645557,
+   "a1": {
+    "text": " the\nA. ",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July OctJulyOctoberJuly",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "October",
+   "tgt": "February",
+   "clean": " Halloween.\nA.",
+   "clean_correct": true,
+   "loading": 0.13927142186598343,
+   "a1": {
+    "text": " the Day of the Dead",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "February Oct FebruaryOct February",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "October",
+   "tgt": "April",
+   "clean": " Halloween.\nA.",
+   "clean_correct": true,
+   "loading": 0.13927142186598343,
+   "a1": {
+    "text": " the\nA. Thanksgiving",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "April Oct OctOctober April",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "holiday",
+   "src": "October",
+   "tgt": "July",
+   "clean": " Halloween.\nA.",
+   "clean_correct": true,
+   "loading": 0.13927142186598343,
+   "a1": {
+    "text": " the\nA. Thanksgiving",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July OctOctober July Oct",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "February",
+   "tgt": "April",
+   "clean": ":\nA. April",
+   "clean_correct": false,
+   "loading": 0.15607656673951584,
+   "a1": {
+    "text": ":\nA. January",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " April FebruaryAprilFebruary April",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "February",
+   "tgt": "July",
+   "clean": ":\nA. April",
+   "clean_correct": false,
+   "loading": 0.15607656673951584,
+   "a1": {
+    "text": "\nA. March\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July FebruaryJulyFebruaryJuly",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "February",
+   "tgt": "October",
+   "clean": ":\nA. April",
+   "clean_correct": false,
+   "loading": 0.15607656673951584,
+   "a1": {
+    "text": " March.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " octFebruary Oct February Oct",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "April",
+   "tgt": "February",
+   "clean": "\nA. May\n",
+   "clean_correct": false,
+   "loading": 0.1474779017946937,
+   "a1": {
+    "text": " ________.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " April FebruaryApril February April",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "April",
+   "tgt": "July",
+   "clean": "\nA. May\n",
+   "clean_correct": false,
+   "loading": 0.1474779017946937,
+   "a1": {
+    "text": "\nA. May\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July AprilJuly AprilJuly",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "April",
+   "tgt": "October",
+   "clean": "\nA. May\n",
+   "clean_correct": false,
+   "loading": 0.1474779017946937,
+   "a1": {
+    "text": " ________.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " octAprilOctober April Oct",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "July",
+   "tgt": "February",
+   "clean": " August.\nA.",
+   "clean_correct": true,
+   "loading": 0.15676819465377115,
+   "a1": {
+    "text": " August.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July FebruaryJuly FebruaryJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "July",
+   "tgt": "April",
+   "clean": " August.\nA.",
+   "clean_correct": true,
+   "loading": 0.15676819465377115,
+   "a1": {
+    "text": " August.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July AprilJulyAprilJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "July",
+   "tgt": "October",
+   "clean": " August.\nA.",
+   "clean_correct": true,
+   "loading": 0.15676819465377115,
+   "a1": {
+    "text": "\nA. August\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July OctJulyOctoberJuly",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "October",
+   "tgt": "February",
+   "clean": " November.\nA.",
+   "clean_correct": true,
+   "loading": 0.1528991704637354,
+   "a1": {
+    "text": " November.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " oct February Oct February Oct",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "October",
+   "tgt": "April",
+   "clean": " November.\nA.",
+   "clean_correct": true,
+   "loading": 0.1528991704637354,
+   "a1": {
+    "text": " November.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "关 oct April OctOctober",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "months",
+   "func": "next_month",
+   "src": "October",
+   "tgt": "July",
+   "clean": " November.\nA.",
+   "clean_correct": true,
+   "loading": 0.1528991704637354,
+   "a1": {
+    "text": " November.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "July Oct Oct Oct Oct",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "lion",
+   "tgt": "eagle",
+   "clean": " savanna.\n\n<think>",
+   "clean_correct": true,
+   "loading": 0.14797319065440784,
+   "a1": {
+    "text": " savanna.\n\n<think>",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " eagle lion Eagle lion Eagle",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "lion",
+   "tgt": "shark",
+   "clean": " savanna.\n\n<think>",
+   "clean_correct": true,
+   "loading": 0.14797319065440784,
+   "a1": {
+    "text": " savanna.\n\n<think>",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " shark lion Shark lion Shark",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "lion",
+   "tgt": "spider",
+   "clean": " savanna.\n\n<think>",
+   "clean_correct": true,
+   "loading": 0.14797319065440784,
+   "a1": {
+    "text": " savanna.\n\n<think>",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " spider Lion spider lion spider",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "eagle",
+   "tgt": "lion",
+   "clean": " forest.\n\nA.",
+   "clean_correct": false,
+   "loading": 0.17689591510729355,
+   "a1": {
+    "text": " forest.\n\nA.",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " lion Eagle lion Eagle lion",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "eagle",
+   "tgt": "shark",
+   "clean": " forest.\n\nA.",
+   "clean_correct": false,
+   "loading": 0.17689591510729355,
+   "a1": {
+    "text": " ocean.\n\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " shark eagle Shark eagle shark",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "eagle",
+   "tgt": "spider",
+   "clean": " forest.\n\nA.",
+   "clean_correct": false,
+   "loading": 0.17689591510729355,
+   "a1": {
+    "text": " forest.\n\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " spider Eagle spider Eagle Spider",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "shark",
+   "tgt": "lion",
+   "clean": " ocean. Sharks are fish",
+   "clean_correct": true,
+   "loading": 0.19419322095134042,
+   "a1": {
+    "text": " ocean. Which of the",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " lion Shark lion Shark lion",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "shark",
+   "tgt": "eagle",
+   "clean": " ocean. Sharks are fish",
+   "clean_correct": true,
+   "loading": 0.19419322095134042,
+   "a1": {
+    "text": " ocean. Which of the",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " eagle shark eagle shark Shark",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "shark",
+   "tgt": "spider",
+   "clean": " ocean. Sharks are fish",
+   "clean_correct": true,
+   "loading": 0.19419322095134042,
+   "a1": {
+    "text": " ocean. Which of the",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " spider Shark spider Shark spider",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "spider",
+   "tgt": "lion",
+   "clean": " forest.\nA.",
+   "clean_correct": false,
+   "loading": 0.19118004495447333,
+   "a1": {
+    "text": " forest.\nA.",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Lion spider lion spider lion",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "spider",
+   "tgt": "eagle",
+   "clean": " forest.\nA.",
+   "clean_correct": false,
+   "loading": 0.19118004495447333,
+   "a1": {
+    "text": " forest.\nA.",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle spider Eagle Spider Eagle",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "habitat",
+   "src": "spider",
+   "tgt": "shark",
+   "clean": " forest.\nA.",
+   "clean_correct": false,
+   "loading": 0.19118004495447333,
+   "a1": {
+    "text": " ocean.\n\nA.",
+    "strict": true,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark spider Shark spider Shark",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "lion",
+   "tgt": "eagle",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.09937874972820282,
+   "a1": {
+    "text": "\n\n<think>\n\n</think>\n\n",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle lion Eagle lion Eagle",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "lion",
+   "tgt": "shark",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.09937874972820282,
+   "a1": {
+    "text": "\n\n<think>\nThinking Process",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark lion Shark lion Shark",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "lion",
+   "tgt": "spider",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.09937874972820282,
+   "a1": {
+    "text": "\n\n<think>\n\n</think>\n\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Lion spider lion Spider Lion",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "eagle",
+   "tgt": "lion",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.1198943318291144,
+   "a1": {
+    "text": "\n\n<think>\n\n</think>\n\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle lion eagle lion Eagle",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "eagle",
+   "tgt": "shark",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.1198943318291144,
+   "a1": {
+    "text": "\n\n<think>\n\n</think>\n\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark eagle shark eagle Shark",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "eagle",
+   "tgt": "spider",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.1198943318291144,
+   "a1": {
+    "text": "\n\n<think>\n\n</think>\n\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle spider Eagle spider Eagle",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "shark",
+   "tgt": "lion",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.13723642446778037,
+   "a1": {
+    "text": "\n\n<think>\nThinking Process",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark lion Shark lion Shark",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "shark",
+   "tgt": "eagle",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.13723642446778037,
+   "a1": {
+    "text": "\n\n<think>\nThinking Process",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark eagle Shark eagle Shark",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "shark",
+   "tgt": "spider",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.13723642446778037,
+   "a1": {
+    "text": "\n\n<think>\n\n</think>\n\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark spider Shark spider Shark",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "spider",
+   "tgt": "lion",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.11719826067035849,
+   "a1": {
+    "text": "\n\n<think>\n\n</think>\n\n",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Lion spider lion spider lion",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "spider",
+   "tgt": "eagle",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.11719826067035849,
+   "a1": {
+    "text": "\n\n<think>\n\n</think>\n\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle spider Eagle spider Eagle",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "legs",
+   "src": "spider",
+   "tgt": "shark",
+   "clean": "\n\n<think>\n\n</think>\n\n",
+   "clean_correct": false,
+   "loading": 0.11719826067035849,
+   "a1": {
+    "text": "\n\n<think>\n\n</think>\n\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark spider Shark spider Shark",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "lion",
+   "tgt": "eagle",
+   "clean": " cat, and a cat",
+   "clean_correct": true,
+   "loading": 0.1602682566100901,
+   "a1": {
+    "text": " cat, and a cat",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle lion Eagle lion Eagle",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "lion",
+   "tgt": "shark",
+   "clean": " cat, and a cat",
+   "clean_correct": true,
+   "loading": 0.1602682566100901,
+   "a1": {
+    "text": " cat, and a cat",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark lion Shark lion Shark",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "lion",
+   "tgt": "spider",
+   "clean": " cat, and a cat",
+   "clean_correct": true,
+   "loading": 0.1602682566100901,
+   "a1": {
+    "text": " cat, and a cat",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " spider Lion spider lion Spider",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "eagle",
+   "tgt": "lion",
+   "clean": " bird. In the context",
+   "clean_correct": true,
+   "loading": 0.1973907635970549,
+   "a1": {
+    "text": " bird. In the context",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " lion Eagle lion Eagle lion",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "eagle",
+   "tgt": "shark",
+   "clean": " bird. In the context",
+   "clean_correct": true,
+   "loading": 0.1973907635970549,
+   "a1": {
+    "text": " bird. In the context",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " shark eagle shark eagle Shark",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "eagle",
+   "tgt": "spider",
+   "clean": " bird. In the context",
+   "clean_correct": true,
+   "loading": 0.1973907635970549,
+   "a1": {
+    "text": " bird. In the context",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " spider Eagle spider Eagle Spider",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "shark",
+   "tgt": "lion",
+   "clean": " fish. However, in",
+   "clean_correct": true,
+   "loading": 0.2074566903439435,
+   "a1": {
+    "text": " fish. However, in",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " lion Shark lion Shark lion",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "shark",
+   "tgt": "eagle",
+   "clean": " fish. However, in",
+   "clean_correct": true,
+   "loading": 0.2074566903439435,
+   "a1": {
+    "text": " fish. However, in",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " eagle shark eagle Shark eagle",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "shark",
+   "tgt": "spider",
+   "clean": " fish. However, in",
+   "clean_correct": true,
+   "loading": 0.2074566903439435,
+   "a1": {
+    "text": " fish. However, in",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " spider Shark spider Shark Shark",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "spider",
+   "tgt": "lion",
+   "clean": " arachnid, which",
+   "clean_correct": true,
+   "loading": 0.20109768347306686,
+   "a1": {
+    "text": " arachnid, which",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " lion spider lion spider lion",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "spider",
+   "tgt": "eagle",
+   "clean": " arachnid, which",
+   "clean_correct": true,
+   "loading": 0.20109768347306686,
+   "a1": {
+    "text": " arachnid, which",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle spider Eagle Spider Eagle",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "class",
+   "src": "spider",
+   "tgt": "shark",
+   "clean": " arachnid, which",
+   "clean_correct": true,
+   "loading": 0.20109768347306686,
+   "a1": {
+    "text": " arachnid, which",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark spider Shark spider Shark",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "lion",
+   "tgt": "eagle",
+   "clean": " pride.\nA.",
+   "clean_correct": true,
+   "loading": 0.14185840636491776,
+   "a1": {
+    "text": " pride. A group of",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle lion Eagle lion Eagle",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "lion",
+   "tgt": "shark",
+   "clean": " pride.\nA.",
+   "clean_correct": true,
+   "loading": 0.14185840636491776,
+   "a1": {
+    "text": " pride.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " shark lion Shark lion Shark",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "lion",
+   "tgt": "spider",
+   "clean": " pride.\nA.",
+   "clean_correct": true,
+   "loading": 0.14185840636491776,
+   "a1": {
+    "text": " pride. A group of",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " spider Lion spider Lion spider",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "eagle",
+   "tgt": "lion",
+   "clean": "\nA. a flock",
+   "clean_correct": false,
+   "loading": 0.1479876312342557,
+   "a1": {
+    "text": "\nA. a.",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " lion Eagle lion Eagle lion",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "eagle",
+   "tgt": "shark",
+   "clean": "\nA. a flock",
+   "clean_correct": false,
+   "loading": 0.1479876312342557,
+   "a1": {
+    "text": "\nA. a school",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " shark eagle Shark eagle shark",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "eagle",
+   "tgt": "spider",
+   "clean": "\nA. a flock",
+   "clean_correct": false,
+   "loading": 0.1479876312342557,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " spider Eagle spider Eagle spider",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "shark",
+   "tgt": "lion",
+   "clean": ":\nA. Pod",
+   "clean_correct": false,
+   "loading": 0.16921605305238205,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " lion Shark lion Shark lion",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "shark",
+   "tgt": "eagle",
+   "clean": ":\nA. Pod",
+   "clean_correct": false,
+   "loading": 0.16921605305238205,
+   "a1": {
+    "text": ":\nA. Pod",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle Shark eagle shark eagle",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "shark",
+   "tgt": "spider",
+   "clean": ":\nA. Pod",
+   "clean_correct": false,
+   "loading": 0.16921605305238205,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " spider Shark spider Shark spider",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "spider",
+   "tgt": "lion",
+   "clean": ":\nA. )",
+   "clean_correct": false,
+   "loading": 0.1758201555772261,
+   "a1": {
+    "text": "\nA. swarm\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Lion spider Lion Spider Lion",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "spider",
+   "tgt": "eagle",
+   "clean": ":\nA. )",
+   "clean_correct": false,
+   "loading": 0.1758201555772261,
+   "a1": {
+    "text": ":\nA. )",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Eagle spider Eagle Spider Eagle",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "animals",
+   "func": "group",
+   "src": "spider",
+   "tgt": "shark",
+   "clean": ":\nA. )",
+   "clean_correct": false,
+   "loading": 0.1758201555772261,
+   "a1": {
+    "text": " _____.\n\nA.",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Shark spider Shark spider Shark",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "three",
+   "tgt": "five",
+   "clean": " six.\nTwo times",
+   "clean_correct": true,
+   "loading": 0.11113939027894627,
+   "a1": {
+    "text": " six. What is the",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Five ThreeThreefive Three",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "three",
+   "tgt": "seven",
+   "clean": " six.\nTwo times",
+   "clean_correct": true,
+   "loading": 0.11113939027894627,
+   "a1": {
+    "text": " six.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "sevenseksevensekseven",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "three",
+   "tgt": "nine",
+   "clean": " six.\nTwo times",
+   "clean_correct": true,
+   "loading": 0.11113939027894627,
+   "a1": {
+    "text": " six. What is the",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " NineninenacNinenine",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "five",
+   "tgt": "three",
+   "clean": " 10. What",
+   "clean_correct": false,
+   "loading": 0.12080092524940317,
+   "a1": {
+    "text": " 10. What",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " threethree Threefivefile",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "five",
+   "tgt": "seven",
+   "clean": " 10. What",
+   "clean_correct": false,
+   "loading": 0.12080092524940317,
+   "a1": {
+    "text": " 10. What",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "sevenSeven fiveSevenSeven",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "five",
+   "tgt": "nine",
+   "clean": " 10. What",
+   "clean_correct": false,
+   "loading": 0.12080092524940317,
+   "a1": {
+    "text": " 10. What",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Nineninenineninenine",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "seven",
+   "tgt": "three",
+   "clean": " fourteen.\nA.",
+   "clean_correct": true,
+   "loading": 0.12532434612512589,
+   "a1": {
+    "text": " 14.\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " three three threeSeven Three",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "seven",
+   "tgt": "five",
+   "clean": " fourteen.\nA.",
+   "clean_correct": true,
+   "loading": 0.12532434612512589,
+   "a1": {
+    "text": " 14.\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " FiveSevenfiveSevenfive",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "seven",
+   "tgt": "nine",
+   "clean": " fourteen.\nA.",
+   "clean_correct": true,
+   "loading": 0.12532434612512589,
+   "a1": {
+    "text": " fourteen.\nA.",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " Nine七ninenit Nine",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "nine",
+   "tgt": "three",
+   "clean": " 18.\n",
+   "clean_correct": false,
+   "loading": 0.130984980951656,
+   "a1": {
+    "text": " 18.\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "threeninenineninenine",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "nine",
+   "tgt": "five",
+   "clean": " 18.\n",
+   "clean_correct": false,
+   "loading": 0.130984980951656,
+   "a1": {
+    "text": " 18.\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "fiveninenineninenine",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "double",
+   "src": "nine",
+   "tgt": "seven",
+   "clean": " 18.\n",
+   "clean_correct": false,
+   "loading": 0.130984980951656,
+   "a1": {
+    "text": " 18.\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "sevenninennine seven",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "three",
+   "tgt": "five",
+   "clean": " 9.\nThe",
+   "clean_correct": false,
+   "loading": 0.09110493585467339,
+   "a1": {
+    "text": " 9.\nA",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "five threefiveficofive",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "three",
+   "tgt": "seven",
+   "clean": " 9.\nThe",
+   "clean_correct": false,
+   "loading": 0.09110493585467339,
+   "a1": {
+    "text": " 9.\nThe",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "sevenseksevensekseven",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "three",
+   "tgt": "nine",
+   "clean": " 9.\nThe",
+   "clean_correct": false,
+   "loading": 0.09110493585467339,
+   "a1": {
+    "text": " 3 squared plus ",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "threeninenineninenine",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "five",
+   "tgt": "three",
+   "clean": " what?\n\nFive squared",
+   "clean_correct": false,
+   "loading": 0.1076206774874167,
+   "a1": {
+    "text": " what?\n\nFive squared",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " three5 ThreeFive Three",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "five",
+   "tgt": "seven",
+   "clean": " what?\n\nFive squared",
+   "clean_correct": false,
+   "loading": 0.1076206774874167,
+   "a1": {
+    "text": " what?\n\nSeven squared",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "sevensesevensevense",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "five",
+   "tgt": "nine",
+   "clean": " what?\n\nFive squared",
+   "clean_correct": false,
+   "loading": 0.1076206774874167,
+   "a1": {
+    "text": " what?\n\nFive squared",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "fiveninenineninenine",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "seven",
+   "tgt": "three",
+   "clean": " 49.\n",
+   "clean_correct": false,
+   "loading": 0.10851951146667654,
+   "a1": {
+    "text": " 49.\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " threesequsevensekseven",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "seven",
+   "tgt": "five",
+   "clean": " 49.\n",
+   "clean_correct": false,
+   "loading": 0.10851951146667654,
+   "a1": {
+    "text": " 49.\n",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "sesevensesevense",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "seven",
+   "tgt": "nine",
+   "clean": " 49.\n",
+   "clean_correct": false,
+   "loading": 0.10851951146667654,
+   "a1": {
+    "text": " what?\n\nNine hundred",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "sevenNine sevennine seven",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "nine",
+   "tgt": "three",
+   "clean": " what?\n\n9 squared",
+   "clean_correct": false,
+   "loading": 0.11143614622679623,
+   "a1": {
+    "text": " what?\n\nThree squared",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " threenine threeninenine",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "nine",
+   "tgt": "five",
+   "clean": " what?\n\n9 squared",
+   "clean_correct": false,
+   "loading": 0.11143614622679623,
+   "a1": {
+    "text": " what?\n\n54",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "fiveninenayninenine",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "square",
+   "src": "nine",
+   "tgt": "seven",
+   "clean": " what?\n\n9 squared",
+   "clean_correct": false,
+   "loading": 0.11143614622679623,
+   "a1": {
+    "text": " what?\n\n<think>\n",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "sevennine七nine seven",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "three",
+   "tgt": "five",
+   "clean": " four. This is a",
+   "clean_correct": true,
+   "loading": 0.10006631368940527,
+   "a1": {
+    "text": " four. This is a",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "thFive ThreefiveFive",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "three",
+   "tgt": "seven",
+   "clean": " four. This is a",
+   "clean_correct": true,
+   "loading": 0.10006631368940527,
+   "a1": {
+    "text": " four. This is a",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Sevenseksevenserseven",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "three",
+   "tgt": "nine",
+   "clean": " four. This is a",
+   "clean_correct": true,
+   "loading": 0.10006631368940527,
+   "a1": {
+    "text": " four. This is a",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Nineninenineninenac",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "five",
+   "tgt": "three",
+   "clean": " six. This is because",
+   "clean_correct": true,
+   "loading": 0.11750952289863066,
+   "a1": {
+    "text": " 6.\n\nTo",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " threeThreefivefivefive",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "five",
+   "tgt": "seven",
+   "clean": " six. This is because",
+   "clean_correct": true,
+   "loading": 0.11750952289863066,
+   "a1": {
+    "text": " six. This is because",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "Sevensevensesevenseven",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "five",
+   "tgt": "nine",
+   "clean": " six. This is because",
+   "clean_correct": true,
+   "loading": 0.11750952289863066,
+   "a1": {
+    "text": " six. This is because",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "nineninenineninenine",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "seven",
+   "tgt": "three",
+   "clean": " eight. This is because",
+   "clean_correct": true,
+   "loading": 0.1276591501452706,
+   "a1": {
+    "text": " 8.\n\nTo",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " three�seven threeseven",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "seven",
+   "tgt": "five",
+   "clean": " eight. This is because",
+   "clean_correct": true,
+   "loading": 0.1276591501452706,
+   "a1": {
+    "text": " eight. This is because",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "sepSevensesevense",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "seven",
+   "tgt": "nine",
+   "clean": " eight. This is because",
+   "clean_correct": true,
+   "loading": 0.1276591501452706,
+   "a1": {
+    "text": " eight. This is because",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "ninennineninenine",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "nine",
+   "tgt": "three",
+   "clean": " ten. This is a",
+   "clean_correct": true,
+   "loading": 0.13683441213586114,
+   "a1": {
+    "text": " ten. This is a",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " threeniteninenacNine",
+    "strict": false,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "nine",
+   "tgt": "five",
+   "clean": " ten. This is a",
+   "clean_correct": true,
+   "loading": 0.13683441213586114,
+   "a1": {
+    "text": " ten. This is a",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "nayninenineninenine",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "successor",
+   "src": "nine",
+   "tgt": "seven",
+   "clean": " ten. This is a",
+   "clean_correct": true,
+   "loading": 0.13683441213586114,
+   "a1": {
+    "text": " ten. This is because",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " sevenninennine seven",
+    "strict": false,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "three",
+   "tgt": "five",
+   "clean": " 't'.\nThe",
+   "clean_correct": true,
+   "loading": 0.06084369190714576,
+   "a1": {
+    "text": " 't'.\nThe",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "five threeFivefivefive",
+    "strict": true,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "three",
+   "tgt": "seven",
+   "clean": " 't'.\nThe",
+   "clean_correct": true,
+   "loading": 0.06084369190714576,
+   "a1": {
+    "text": " 't'.\nThe",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " threeSeven threeSevenseven",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "three",
+   "tgt": "nine",
+   "clean": " 't'.\nThe",
+   "clean_correct": true,
+   "loading": 0.06084369190714576,
+   "a1": {
+    "text": " 't'.\nThe",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "niteninenacNinenine",
+    "strict": true,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "five",
+   "tgt": "three",
+   "clean": " 'f'. What is",
+   "clean_correct": true,
+   "loading": 0.07055265828967094,
+   "a1": {
+    "text": " 'f'. What is",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "fiveFive Three Three five",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "five",
+   "tgt": "seven",
+   "clean": " 'f'. What is",
+   "clean_correct": true,
+   "loading": 0.07055265828967094,
+   "a1": {
+    "text": " 'f'. What is",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "fiveSeven5Sevenser",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "five",
+   "tgt": "nine",
+   "clean": " 'f'. What is",
+   "clean_correct": true,
+   "loading": 0.07055265828967094,
+   "a1": {
+    "text": " 'f'. What is",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " fiveninenineninenine",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "seven",
+   "tgt": "three",
+   "clean": " 's'.\nThe",
+   "clean_correct": true,
+   "loading": 0.0753809968856248,
+   "a1": {
+    "text": " 's'.\nThe",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " threeSeven Threesevenseven",
+    "strict": true,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "seven",
+   "tgt": "five",
+   "clean": " 's'.\nThe",
+   "clean_correct": true,
+   "loading": 0.0753809968856248,
+   "a1": {
+    "text": " 's'.\nThe",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "fiveSeven5SevenSeven",
+    "strict": true,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "seven",
+   "tgt": "nine",
+   "clean": " 's'.\nThe",
+   "clean_correct": true,
+   "loading": 0.0753809968856248,
+   "a1": {
+    "text": " 's'.\nThe",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "nine Sevennine sevennine",
+    "strict": true,
+    "set": false,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "nine",
+   "tgt": "three",
+   "clean": " 'n'.\nThe",
+   "clean_correct": true,
+   "loading": 0.07988158376379446,
+   "a1": {
+    "text": " 'n'. What is",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "niteninenineninenine",
+    "strict": false,
+    "set": true,
+    "degenerate": false
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "nine",
+   "tgt": "five",
+   "clean": " 'n'.\nThe",
+   "clean_correct": true,
+   "loading": 0.07988158376379446,
+   "a1": {
+    "text": " 'n'.\nThe",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": " fiveninenineninenine",
+    "strict": true,
+    "set": true,
+    "degenerate": true
+   }
+  },
+  {
+   "category": "numbers",
+   "func": "first_letter",
+   "src": "nine",
+   "tgt": "seven",
+   "clean": " 'n'.\nThe",
+   "clean_correct": true,
+   "loading": 0.07988158376379446,
+   "a1": {
+    "text": " 'n'.\nThe",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   },
+   "a2": {
+    "text": "ninennine sevennine",
+    "strict": false,
+    "set": false,
+    "degenerate": false
+   }
+  }
+ ]
+}
