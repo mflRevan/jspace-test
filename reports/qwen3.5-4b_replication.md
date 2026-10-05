@@ -46,6 +46,8 @@ Interactive layer × position slices for the gallery prompts: `results/03_galler
 
 ## Notes on method
 
+- **Lens validity.** Our own fit with the same recipe on 32 disjoint WikiText prompts (`00_fit_lens.py`) matches the reference lens: per-layer cosine of `J_l` 0.96-0.997 across the band, top-10 readout overlap 67% (L17) to 91% (L27) on held-out text.
+
 - **Swaps.** Lens-coordinate swap with pseudoinverse coordinates on unit J-lens vectors, applied at every band layer (clamped), alpha=1; swapped words use aligned surface forms (" spider"/" ant", "Spider"/"Ant"). alpha >= 1.5 makes the model emit the swapped-in word itself.
 - **Scoring.** Qwen splits digits and many words ("Basket"+"ball"), so answers are scored by whole-string log-prob and by greedy text, not next-token top-1.
 - **Workspace band** was measured, not assumed; all interventions use L17-27.
