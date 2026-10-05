@@ -101,3 +101,20 @@ def wordlike_mask(tok, vocab_size: int) -> torch.Tensor:
     or a digit / CJK character). Used only to filter *displayed* top-k lists;
     ranks are always over the full vocabulary, as in the reference code."""
     return _wordlike_mask_cached(id(tok), vocab_size, tok)
+
+
+def paired_forms(tok, a: str, b: str, *, max_pairs: int = 4) -> tuple[list[int], list[int]]:
+    """Aligned single-token surface forms of ``a`` and ``b`` for lens swaps:
+    the i-th id of each list is the same casing/spacing variant (e.g.
+    ``" spider"``/``" ant"``, ``"Spider"``/``"Ant"``). Forms that are single
+    tokens for only one of the words are dropped."""
+    src, tgt = [], []
+    for fa, fb in zip(surface_forms(a), surface_forms(b), strict=False):
+        ea = tok.encode(fa, add_special_tokens=False)
+        eb = tok.encode(fb, add_special_tokens=False)
+        if len(ea) == 1 and len(eb) == 1 and ea[0] not in src and eb[0] not in tgt and ea[0] != eb[0]:
+            src.append(ea[0])
+            tgt.append(eb[0])
+        if len(src) == max_pairs:
+            break
+    return src, tgt

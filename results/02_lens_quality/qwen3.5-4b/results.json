@@ -1,0 +1,492 @@
+{
+ "meta": {
+  "git_commit": "d562407b382d8096b6acf412188a2c08bf59d4d7",
+  "git_dirty": true,
+  "time_utc": "2026-10-05T19:45:47Z",
+  "python": "3.12.3",
+  "packages": {
+   "torch": "2.11.0+cu128",
+   "transformers": "5.18.0",
+   "jlens": "0.1.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "model": {
+   "hf_id": "Qwen/Qwen3.5-4B",
+   "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+  },
+  "lens": {
+   "key": "np-n1000",
+   "source": "LensSource(hub=('neuronpedia/jacobian-lens', '16a01f309fcec900fdcec3f4cd5b64f3d00e4d5a', 'qwen3.5-4b/jlens/Salesforce-wikitext/Qwen3.5-4B_jacobian_lens_n1000.pt'), local=None, note='Neuronpedia fit with the jlens reference implementation, n=1000.')"
+  },
+  "args": {
+   "model": "qwen3.5-4b",
+   "lens": null
+  }
+ },
+ "results": {
+  "multihop": {
+   "jacobian_all": {
+    "auc": 0.6919725286950588,
+    "pass@1": 0.23404255319148937,
+    "pass@10": 0.5638297872340425,
+    "n": 94
+   },
+   "jacobian_band": {
+    "auc": 0.6099101221319525,
+    "pass@1": 0.2127659574468085,
+    "pass@10": 0.44680851063829785,
+    "n": 94
+   },
+   "logit_all": {
+    "auc": 0.45732285340186885,
+    "pass@1": 0.13829787234042554,
+    "pass@10": 0.3617021276595745,
+    "n": 94
+   },
+   "logit_band": {
+    "auc": 0.3650636720120923,
+    "pass@1": 0.13829787234042554,
+    "pass@10": 0.30851063829787234,
+    "n": 94
+   },
+   "skipped_multitoken": 9
+  },
+  "multilingual": {
+   "jacobian_all": {
+    "auc": 0.5212384716959386,
+    "pass@1": 0.23943661971830985,
+    "pass@10": 0.39436619718309857,
+    "n": 426
+   },
+   "jacobian_band": {
+    "auc": 0.4909988880293157,
+    "pass@1": 0.215962441314554,
+    "pass@10": 0.3873239436619718,
+    "n": 426
+   },
+   "logit_all": {
+    "auc": 0.42839083194732497,
+    "pass@1": 0.1619718309859155,
+    "pass@10": 0.3215962441314554,
+    "n": 426
+   },
+   "logit_band": {
+    "auc": 0.3887827540976013,
+    "pass@1": 0.13145539906103287,
+    "pass@10": 0.27699530516431925,
+    "n": 426
+   },
+   "skipped_multitoken": 2
+  },
+  "order-ops": {
+   "jacobian_all": {
+    "auc": 0.7611142127175134,
+    "pass@1": 0.28440366972477066,
+    "pass@10": 0.7247706422018348,
+    "n": 109
+   },
+   "jacobian_band": {
+    "auc": 0.6570311135361497,
+    "pass@1": 0.24770642201834864,
+    "pass@10": 0.5229357798165137,
+    "n": 109
+   },
+   "logit_all": {
+    "auc": 0.5732893812113173,
+    "pass@1": 0.10091743119266056,
+    "pass@10": 0.4036697247706422,
+    "n": 109
+   },
+   "logit_band": {
+    "auc": 0.3149366540342473,
+    "pass@1": 0.045871559633027525,
+    "pass@10": 0.1651376146788991,
+    "n": 109
+   },
+   "skipped_multitoken": 1
+  },
+  "poetry": {
+   "jacobian_all": {
+    "auc": 0.1506194871341916,
+    "pass@1": 0.0,
+    "pass@10": 0.02040816326530612,
+    "n": 98
+   },
+   "jacobian_band": {
+    "auc": 0.10147611283642125,
+    "pass@1": 0.0,
+    "pass@10": 0.02040816326530612,
+    "n": 98
+   },
+   "logit_all": {
+    "auc": 0.09227993550631691,
+    "pass@1": 0.01020408163265306,
+    "pass@10": 0.02040816326530612,
+    "n": 98
+   },
+   "logit_band": {
+    "auc": 0.020448289953443347,
+    "pass@1": 0.0,
+    "pass@10": 0.0,
+    "n": 98
+   },
+   "skipped_multitoken": 0
+  },
+  "typo": {
+   "jacobian_all": {
+    "auc": 0.722706056171728,
+    "pass@1": 0.3125,
+    "pass@10": 0.59375,
+    "n": 96
+   },
+   "jacobian_band": {
+    "auc": 0.6670877671501356,
+    "pass@1": 0.2604166666666667,
+    "pass@10": 0.5,
+    "n": 96
+   },
+   "logit_all": {
+    "auc": 0.9423065510383801,
+    "pass@1": 0.7083333333333334,
+    "pass@10": 0.9479166666666666,
+    "n": 96
+   },
+   "logit_band": {
+    "auc": 0.5039679781365578,
+    "pass@1": 0.11458333333333333,
+    "pass@10": 0.3645833333333333,
+    "n": 96
+   },
+   "skipped_multitoken": 0
+  },
+  "association": {
+   "jacobian_all": {
+    "auc": 0.1787610160637605,
+    "pass@1": 0.0,
+    "pass@10": 0.029411764705882353,
+    "n": 102
+   },
+   "jacobian_band": {
+    "auc": 0.11870610261817599,
+    "pass@1": 0.0,
+    "pass@10": 0.029411764705882353,
+    "n": 102
+   },
+   "logit_all": {
+    "auc": 0.08940870167669517,
+    "pass@1": 0.0,
+    "pass@10": 0.0,
+    "n": 102
+   },
+   "logit_band": {
+    "auc": 0.04484141166112401,
+    "pass@1": 0.0,
+    "pass@10": 0.0,
+    "n": 102
+   },
+   "skipped_multitoken": 0
+  }
+ },
+ "best_examples": {
+  "multihop": [
+   [
+    "christmas-season",
+    "Christmas",
+    0,
+    24
+   ],
+   [
+    "atomic-79-symbol",
+    "gold",
+    0,
+    23
+   ],
+   [
+    "atomic-26-symbol",
+    "iron",
+    0,
+    24
+   ],
+   [
+    "etym-wargod-month",
+    "March",
+    0,
+    28
+   ],
+   [
+    "etym-frigg-position",
+    "Friday",
+    0,
+    23
+   ],
+   [
+    "chem-photosynthesis-Z",
+    "oxygen",
+    0,
+    21
+   ],
+   [
+    "chem-organic-Z",
+    "carbon",
+    0,
+    21
+   ],
+   [
+    "chem-bones-Z",
+    "calcium",
+    0,
+    26
+   ]
+  ],
+  "multilingual": [
+   [
+    "spanish-opposite-big",
+    "small",
+    0,
+    23
+   ],
+   [
+    "french-season-summer",
+    "season",
+    0,
+    10
+   ],
+   [
+    "french-season-summer",
+    "summer",
+    0,
+    25
+   ],
+   [
+    "chinese-color-banana",
+    "banana",
+    0,
+    23
+   ],
+   [
+    "chinese-color-banana",
+    "yellow",
+    0,
+    24
+   ],
+   [
+    "japanese-day-monday",
+    "Tuesday",
+    0,
+    26
+   ],
+   [
+    "russian-opposite-heavy",
+    "light",
+    0,
+    29
+   ],
+   [
+    "italian-color-sky",
+    "blue",
+    0,
+    23
+   ]
+  ],
+  "order-ops": [
+   [
+    "parens-add-mult",
+    "5",
+    0,
+    20
+   ],
+   [
+    "parens-sub-mult",
+    "5",
+    0,
+    20
+   ],
+   [
+    "mult-parens-add",
+    "7",
+    0,
+    23
+   ],
+   [
+    "mult-parens-add",
+    "multiplication",
+    0,
+    28
+   ],
+   [
+    "mult-parens-sub",
+    "3",
+    0,
+    20
+   ],
+   [
+    "div-sub-left",
+    "4",
+    0,
+    23
+   ],
+   [
+    "chain-mult-sub-add",
+    "6",
+    0,
+    29
+   ],
+   [
+    "word-add-mult",
+    "12",
+    0,
+    23
+   ]
+  ],
+  "poetry": [
+   [
+    "couplet-shook-took",
+    "took",
+    4,
+    24
+   ],
+   [
+    "couplet-true-through",
+    "through",
+    8,
+    26
+   ],
+   [
+    "couplet-mind-find",
+    "find",
+    15,
+    22
+   ],
+   [
+    "couplet-brook-look",
+    "look",
+    26,
+    26
+   ],
+   [
+    "couplet-near-fear",
+    "fear",
+    27,
+    27
+   ],
+   [
+    "couplet-bed-dead",
+    "dead",
+    42,
+    27
+   ],
+   [
+    "couplet-shore-more",
+    "more",
+    62,
+    2
+   ],
+   [
+    "couplet-breath-death",
+    "death",
+    65,
+    23
+   ]
+  ],
+  "typo": [
+   [
+    "typo-language",
+    "language",
+    0,
+    8
+   ],
+   [
+    "typo-search",
+    "search",
+    0,
+    25
+   ],
+   [
+    "typo-address",
+    "address",
+    0,
+    23
+   ],
+   [
+    "typo-until",
+    "until",
+    0,
+    20
+   ],
+   [
+    "typo-something",
+    "something",
+    0,
+    8
+   ],
+   [
+    "typo-business",
+    "business",
+    0,
+    8
+   ],
+   [
+    "typo-review",
+    "review",
+    0,
+    26
+   ],
+   [
+    "typo-science",
+    "science",
+    0,
+    9
+   ]
+  ],
+  "association": [
+   [
+    "music-h",
+    "music",
+    1,
+    26
+   ],
+   [
+    "night-h",
+    "night",
+    1,
+    18
+   ],
+   [
+    "news-h",
+    "news",
+    2,
+    24
+   ],
+   [
+    "horror",
+    "horror",
+    23,
+    11
+   ],
+   [
+    "light-h",
+    "light",
+    25,
+    30
+   ],
+   [
+    "desert",
+    "desert",
+    26,
+    26
+   ],
+   [
+    "book-h",
+    "book",
+    30,
+    11
+   ],
+   [
+    "dawn",
+    "dawn",
+    31,
+    14
+   ]
+  ]
+ }
+}
