@@ -148,7 +148,8 @@ def main():
         ax.set_xlabel("a - threshold")
         ax.set_ylabel("layer")
         ax.set_title(title, loc="left")
-    fig.colorbar(im, ax=axes[1], fraction=0.046)
+    fig.colorbar(im, ax=axes[1], fraction=0.046, pad=0.02)
+    fig.subplots_adjust(wspace=0.38)
     ax = axes[2]
     x = np.arange(L)
     for k, c, lab in (("proj", SERIES[0], "full activation"), ("jproj", SERIES[1], "J-lens coords"), ("rrshare", SERIES[2], "J-lens rank share")):
