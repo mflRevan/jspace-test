@@ -8,3 +8,6 @@ lenses/
 results/**/*.pt
 results/**/*.npy
 scratch/
+
+# Interactive slice pages are large (15-30 MB each); regenerate with experiments/03_gallery.py
+results/**/slice_*.html
