@@ -1,18 +1,24 @@
-"""Minimal on-policy policy-gradient training with optional workspace gating.
+"""On-policy policy-gradient training with optional workspace gating.
 
-REINFORCE with a per-prompt mean baseline: for each prompt, sample ``n``
-completions, reward r_i in {0, 1}, advantage A_i = r_i - mean(r), and minimise
-``-sum_i A_i log p(c_i | prompt)`` averaged over the batch. No clipping, KL
-penalty or reference model. Optimiser: SGD with momentum and global gradient
-clipping (keeps the relative gradient magnitudes the gate produces).
+One step: sample ``samples`` completions for each of ``prompts_per_step``
+prompts (:func:`jspace.rollout.rollout`), reward r in {0, 1}, advantage
+A = r - mean(r) per prompt, and minimise the token-level policy-gradient loss
 
-Weights are kept in fp32 with bf16 autocast for compute. The token embedding /
-unembedding (tied) and the final norm are frozen in every arm so the J-lens
-(defined through W_U and the final norm) stays valid during training.
+    L = - sum_i A_i sum_t log p(y_it | y_<t, x_i) / (number of scored tokens)
+
+(REINFORCE with a mean baseline; no clipping, KL penalty or reference model).
+In the gated arm the gradient reaching every workspace-band layer is projected
+onto the active J-space and scaled by the readout confidence, using selections
+recorded during the rollout (:class:`jspace.gating.PrecomputedGate`).
+
+Weights stay in bf16; :class:`jspace.optim.KahanSGD` (momentum, Kahan-compensated
+bf16 updates) with global gradient clipping. The tied embedding / unembedding and
+the final norm are frozen in every arm so the J-lens stays valid.
 """
 
 from __future__ import annotations
 
+import time
 from collections.abc import Callable
 from dataclasses import dataclass
 
@@ -20,23 +26,24 @@ import numpy as np
 import torch
 import torch.utils.checkpoint
 
-from jspace.gating import WorkspaceGate
+from jspace.gating import PrecomputedGate
 from jspace.model import LensedModel
-
-Task = Callable[[np.random.Generator], tuple[str, str]]  # -> (prompt text, answer)
+from jspace.optim import KahanSGD
+from jspace.rollout import rollout
 
 
 @dataclass
 class RLConfig:
-    lr: float = 1e-2
+    lr: float = 0.1
     momentum: float = 0.9
     clip: float = 1.0
     prompts_per_step: int = 8
     samples: int = 8
-    max_new_tokens: int = 5
+    max_new_tokens: int = 512
     temperature: float = 1.0
-    gate_mode: str | None = None  # None (baseline) or a jspace.gating mode
-    gate_k: int = 10
+    micro_batch: int = 8
+    gated: bool = False
+    k: int = 10
 
 
 def trainable_params(lm: LensedModel) -> list[torch.nn.Parameter]:
@@ -67,63 +74,57 @@ def token_logprobs(lm: LensedModel, hidden: torch.Tensor, targets: torch.Tensor,
     return torch.cat(out, 1)
 
 
-def reward(text: str, answer: str) -> float:
-    toks = text.strip().split()
-    return float(bool(toks) and toks[0].strip(".,") == answer)
-
-
-class Trainer:
-    def __init__(self, lm: LensedModel, cfg: RLConfig, seed: int = 0) -> None:
-        self.lm, self.cfg = lm, cfg
+class RLTrainer:
+    def __init__(self, lm: LensedModel, cfg: RLConfig, reward_fn: Callable[[str, str], float]) -> None:
+        self.lm, self.cfg, self.reward_fn = lm, cfg, reward_fn
         self.params = trainable_params(lm)
-        self.opt = torch.optim.SGD(self.params, lr=cfg.lr, momentum=cfg.momentum)
-        self.rng = np.random.default_rng(seed)
-        torch.manual_seed(seed)
-        self.pad = lm.tok.pad_token_id if lm.tok.pad_token_id is not None else 0
-        self.gate = (WorkspaceGate(lm, lm.spec.band_layers, k=cfg.gate_k, mode=cfg.gate_mode, seed=seed)
-                     if cfg.gate_mode else None)
+        self.opt = KahanSGD(self.params, lr=cfg.lr, momentum=cfg.momentum)
+        lm.hf.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+        self.band = lm.spec.band_layers
 
-    @torch.no_grad()
-    def sample(self, prompt_ids: torch.Tensor) -> list[torch.Tensor]:
-        with torch.autocast("cuda", dtype=torch.bfloat16):
-            out = self.lm.hf.generate(
-                prompt_ids[None].expand(self.cfg.samples, -1), do_sample=True, temperature=self.cfg.temperature,
-                top_p=1.0, top_k=0, max_new_tokens=self.cfg.max_new_tokens, pad_token_id=self.pad)
-        return [o[prompt_ids.shape[0]:] for o in out]
-
-    def step(self, task: Task) -> dict:
+    def step(self, prompts: list[str], answers: list[str]) -> dict:
         cfg, lm = self.cfg, self.lm
+        t0 = time.time()
+        ro = rollout(lm, prompts, n=cfg.samples, max_new_tokens=cfg.max_new_tokens, temperature=cfg.temperature,
+                     capture_layers=self.band if cfg.gated else None, k=cfg.k)
+        t_roll = time.time() - t0
+        r = np.array([self.reward_fn(t, answers[i // cfg.samples]) for i, t in enumerate(ro.texts)], dtype=np.float32)
+        adv = (r.reshape(-1, cfg.samples) - r.reshape(-1, cfg.samples).mean(1, keepdims=True)).reshape(-1)
+        active = np.nonzero(adv)[0]
+        lens = ro.gen_mask.sum(1).float()
+        stats = {"reward": float(r.mean()), "frac_groups_active": float((r.reshape(-1, cfg.samples).std(1) > 0).mean()),
+                 "mean_len": float(lens.mean()), "truncated": float((lens >= cfg.max_new_tokens).float().mean()),
+                 "t_rollout": t_roll}
+        if cfg.gated:
+            c = torch.stack([s.c[ro.attn.bool()].float() for s in ro.selection.values()])
+            stats["gate_c_mean"] = float(c.mean())
+            stats["gate_c_median"] = float(c.median())
+        t1 = time.time()
         self.opt.zero_grad(set_to_none=True)
-        rewards, n_active = [], 0
-        norm = cfg.prompts_per_step * cfg.samples
-        for _ in range(cfg.prompts_per_step):
-            prompt, answer = task(self.rng)
-            p_ids = lm.encode(prompt)
-            comps = self.sample(p_ids)
-            r = np.array([reward(lm.tok.decode(c, skip_special_tokens=True), answer) for c in comps])
-            rewards.append(r.mean())
-            adv = r - r.mean()
-            if np.all(adv == 0):
-                continue
-            n_active += 1
-            ids = torch.stack([torch.cat([p_ids, c]) for c in comps])  # equal lengths (generate pads)
-            mask = torch.stack([(c != self.pad) for c in comps]).float()
-            # keep the first EOS/pad position scored when it is a real EOS token
-            n_p = p_ids.shape[0]
-            ctx = self.gate if self.gate is not None else _null()
-            with ctx, torch.autocast("cuda", dtype=torch.bfloat16):
-                logits = lm.hf(input_ids=ids, use_cache=False).logits[:, n_p - 1 : -1].float()
-            lp = logits.log_softmax(-1).gather(2, ids[:, n_p:, None])[..., 0]
-            a = torch.tensor(adv, device=lm.device, dtype=torch.float32)
-            loss = -(a[:, None] * lp * mask).sum() / norm
-            loss.backward()
-        gnorm = float(torch.nn.utils.clip_grad_norm_(self.params, cfg.clip)) if n_active else 0.0
-        if n_active:
+        gnorm = 0.0
+        if len(active):
+            lm.hf.train()
+            n_tok = float(ro.gen_mask[active].sum())
+            a_all = torch.tensor(adv, device=lm.device)
+            for s in range(0, len(active), cfg.micro_batch):
+                rows = torch.tensor(active[s : s + cfg.micro_batch], device=lm.device)
+                gate = PrecomputedGate(lm, {l: sel.rows(rows) for l, sel in ro.selection.items()}) if cfg.gated else _Null()
+                with gate, torch.autocast("cuda", dtype=torch.bfloat16):
+                    h = lm.hf.model(input_ids=ro.ids[rows], attention_mask=ro.attn[rows], position_ids=ro.pos[rows],
+                                    use_cache=False).last_hidden_state
+                    lp = token_logprobs(lm, h[:, ro.n_prompt - 1 : -1], ro.ids[rows, ro.n_prompt :])
+                loss = -(a_all[rows, None] * lp * ro.gen_mask[rows]).sum() / n_tok
+                loss.backward()
+                del h, lp, loss
+            gnorm = float(torch.nn.utils.clip_grad_norm_(self.params, cfg.clip))
             self.opt.step()
-        return {"reward": float(np.mean(rewards)), "grad_norm": gnorm, "active_prompts": n_active}
+            self.opt.zero_grad(set_to_none=True)
+            lm.hf.eval()
+        stats.update(grad_norm=gnorm, n_active=int(len(active)), t_train=time.time() - t1)
+        return stats
 
 
-class _null:
+class _Null:
     def __enter__(self):
         return self
 

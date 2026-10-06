@@ -11,3 +11,7 @@ scratch/
 
 # Interactive slice pages are large (15-30 MB each); regenerate with experiments/03_gallery.py
 results/**/slice_*.html
+
+# RL pilot / smoke runs
+results/19_rl_gsm8k/**/*_pilot/
+results/19_rl_gsm8k/**/*_smoke/

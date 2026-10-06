@@ -214,3 +214,58 @@ def captured_fraction(Q: torch.Tensor, g: torch.Tensor) -> torch.Tensor:
     """Per-token ``||Q Q^T g||^2 / ||g||^2`` for ``Q`` ``[T, d, k]``, ``g`` ``[T, d]``."""
     c = torch.einsum("tdk,td->tk", Q, g.float())
     return c.pow(2).sum(-1) / g.float().pow(2).sum(-1).clamp_min(1e-30)
+
+
+class PrecomputedGate:
+    """Apply the workspace gate from selections recorded during the rollout
+    (:mod:`jspace.rollout`). No vocabulary readout happens in training: per token
+    the projection onto the unit lens vectors ``v_i = J^T w_i / n_i`` is
+
+        P g = J^T ( sum_i (a_i / n_i) w_i ),   a = Ginv b,   b_i = w_i . (J g) / n_i
+
+    i.e. two d x d matmuls per token plus k-row gathers, scaled by c.
+
+    ``selection`` maps band layer -> :class:`jspace.rollout.Selection` for exactly
+    the rows of the batch being forwarded.
+    """
+
+    def __init__(self, lm: LensedModel, selection: dict, *, chunk: int = 4096) -> None:
+        self.lm, self.sel, self.chunk = lm, selection, chunk
+        self._handles: list = []
+        self._W = _w_eff_bf16(lm)
+
+    def project(self, layer: int, g: torch.Tensor) -> torch.Tensor:
+        s = self.sel[layer]
+        B, T, d = g.shape
+        J = self.lm.J[layer]
+        flat = g.reshape(-1, d).float()
+        ids, inv_n = s.ids.reshape(B * T, -1), s.inv_n.reshape(B * T, -1)
+        ginv, c = s.ginv.reshape(B * T, *s.ginv.shape[-2:]), s.c.reshape(-1)
+        out = torch.zeros_like(flat)
+        live = (c > 0).nonzero()[:, 0]
+        for a0 in range(0, len(live), self.chunk):
+            rows = live[a0 : a0 + self.chunk]
+            W = self._W[ids[rows]].float()  # [n, k, d]
+            u = flat[rows] @ J.T  # J g
+            b = torch.einsum("nkd,nd->nk", W, u) * inv_n[rows]
+            a = torch.einsum("nkj,nj->nk", ginv[rows], b) * inv_n[rows]
+            out[rows] = (torch.einsum("nk,nkd->nd", a, W) @ J) * c[rows, None]
+        return out.view(B, T, d).to(g.dtype)
+
+    def _hook(self, layer: int):
+        def fwd(module, inputs, output):
+            if torch._C._current_graph_task_id() != -1:
+                return  # activation-checkpoint recompute inside backward
+            h = output if torch.is_tensor(output) else output[0]
+            if h.requires_grad:
+                h.register_hook(lambda g, layer=layer: self.project(layer, g))
+        return fwd
+
+    def __enter__(self) -> PrecomputedGate:
+        self._handles = [self.lm.layers[l].register_forward_hook(self._hook(l)) for l in self.sel]
+        return self
+
+    def __exit__(self, *exc) -> None:
+        for hd in self._handles:
+            hd.remove()
+        self._handles = []
