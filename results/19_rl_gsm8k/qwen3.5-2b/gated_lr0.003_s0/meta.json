@@ -1,0 +1,43 @@
+{
+ "git_commit": "5919a8d8be1055e361745a97de668a4797cb5314",
+ "git_dirty": true,
+ "time_utc": "2026-10-06T03:11:10Z",
+ "python": "3.12.3",
+ "packages": {
+  "torch": "2.11.0+cu128",
+  "transformers": "5.18.0",
+  "jlens": "0.1.0"
+ },
+ "gpu": "NVIDIA GeForce RTX 5090",
+ "model": {
+  "hf_id": "Qwen/Qwen3.5-2B",
+  "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+ },
+ "lens": {
+  "key": "np",
+  "source": "LensSource(hub=('neuronpedia/jacobian-lens', 'b25d72a96b79c8e309d6625955a98751da47e67a', 'qwen3.5-2b/jlens/Salesforce-wikitext/Qwen3.5-2B_jacobian_lens.pt'), local=None, note='Neuronpedia fit with the jlens reference implementation, n=283 (converged).')"
+ },
+ "args": {
+  "model": "qwen3.5-2b",
+  "arm": "gated",
+  "lr": 0.003,
+  "steps": 150,
+  "eval_every": 25,
+  "no_eval": false,
+  "k": 10,
+  "seed": 0,
+  "tag": ""
+ },
+ "config": {
+  "lr": 0.003,
+  "momentum": 0.9,
+  "clip": 1.0,
+  "prompts_per_step": 8,
+  "samples": 8,
+  "max_new_tokens": 512,
+  "temperature": 1.0,
+  "micro_batch": 8,
+  "gated": true,
+  "k": 10
+ }
+}

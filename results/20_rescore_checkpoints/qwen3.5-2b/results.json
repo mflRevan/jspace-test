@@ -1,0 +1,56 @@
+{
+ "meta": {
+  "git_commit": "5919a8d8be1055e361745a97de668a4797cb5314",
+  "git_dirty": true,
+  "time_utc": "2026-10-06T04:27:39Z",
+  "python": "3.12.3",
+  "packages": {
+   "torch": "2.11.0+cu128",
+   "transformers": "5.18.0",
+   "jlens": "0.1.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "model": {
+   "hf_id": "Qwen/Qwen3.5-2B",
+   "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+  },
+  "lens": {
+   "key": "np",
+   "source": "LensSource(hub=('neuronpedia/jacobian-lens', 'b25d72a96b79c8e309d6625955a98751da47e67a', 'qwen3.5-2b/jlens/Salesforce-wikitext/Qwen3.5-2B_jacobian_lens.pt'), local=None, note='Neuronpedia fit with the jlens reference implementation, n=283 (converged).')"
+  },
+  "args": {
+   "ckpts": [
+    "results/19_rl_gsm8k/qwen3.5-2b/baseline_lr0.003_s0/final",
+    "results/19_rl_gsm8k/qwen3.5-2b/gated_lr0.003_s0/final"
+   ],
+   "model": "qwen3.5-2b"
+  }
+ },
+ "n": {
+  "gsm8k": 1319,
+  "mmlu": 2000
+ },
+ "results": {
+  "base": {
+   "gsm8k": 0.7490523123578469,
+   "gsm8k_mean_len": 317.78847611827143,
+   "mmlu": 0.5775,
+   "facts_twohop_robust": 0.5444444444444444,
+   "facts_single_robust": 0.640625
+  },
+  "baseline_lr0.003_s0": {
+   "gsm8k": 0.6542835481425322,
+   "gsm8k_mean_len": 249.14025777103868,
+   "mmlu": 0.571,
+   "facts_twohop_robust": 0.5666666666666667,
+   "facts_single_robust": 0.6875
+  },
+  "gated_lr0.003_s0": {
+   "gsm8k": 0.7543593631539045,
+   "gsm8k_mean_len": 280.65428354814253,
+   "mmlu": 0.5645,
+   "facts_twohop_robust": 0.5222222222222223,
+   "facts_single_robust": 0.734375
+  }
+ }
+}
