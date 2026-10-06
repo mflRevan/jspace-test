@@ -71,6 +71,25 @@ MODELS: dict[str, ModelSpec] = {
         chat=True,
         band=(17, 27),  # results/01_layer_structure/qwen3.5-4b
     ),
+    "qwen3.5-2b": ModelSpec(
+        key="qwen3.5-2b",
+        hf_id="Qwen/Qwen3.5-2B",
+        revision="15852e8c16360a2fea060d615a32b45270f8a8fc",
+        lenses={
+            # Same recipe; Neuronpedia's fit stopped early at convergence (283 prompts).
+            "np": LensSource(
+                hub=(
+                    "neuronpedia/jacobian-lens",
+                    "b25d72a96b79c8e309d6625955a98751da47e67a",  # branch main
+                    "qwen3.5-2b/jlens/Salesforce-wikitext/Qwen3.5-2B_jacobian_lens.pt",
+                ),
+                note="Neuronpedia fit with the jlens reference implementation, n=283 (converged).",
+            ),
+        },
+        default_lens="np",
+        chat=True,
+        band=(9, 18),  # results/01_layer_structure/qwen3.5-2b
+    ),
     "qwen3.5-4b-base": ModelSpec(
         key="qwen3.5-4b-base",
         hf_id="Qwen/Qwen3.5-4B-Base",

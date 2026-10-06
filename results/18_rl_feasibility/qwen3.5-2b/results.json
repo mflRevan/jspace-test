@@ -1,0 +1,149 @@
+{
+ "meta": {
+  "git_commit": "7607f7385cda1bd1c583566797d656e11eb963bf",
+  "git_dirty": true,
+  "time_utc": "2026-10-06T01:26:42Z",
+  "python": "3.12.3",
+  "packages": {
+   "torch": "2.11.0+cu128",
+   "transformers": "5.18.0",
+   "jlens": "0.1.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "model": {
+   "hf_id": "Qwen/Qwen3.5-2B",
+   "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc"
+  },
+  "lens": {
+   "key": "np",
+   "source": "LensSource(hub=('neuronpedia/jacobian-lens', 'b25d72a96b79c8e309d6625955a98751da47e67a', 'qwen3.5-2b/jlens/Salesforce-wikitext/Qwen3.5-2B_jacobian_lens.pt'), local=None, note='Neuronpedia fit with the jlens reference implementation, n=283 (converged).')"
+  },
+  "args": {
+   "model": "qwen3.5-2b",
+   "n_eval": 1319,
+   "n_sample_problems": 128,
+   "samples": 8,
+   "max_new": 384,
+   "batch": 64
+  }
+ },
+ "greedy": {
+  "accuracy": 0.6588324488248674,
+  "n": 1319,
+  "mean_len": 297.0030326004549,
+  "p90_len": 384.0,
+  "truncated": 0.2585291887793783,
+  "tokens_per_s": 2051.8755308657496,
+  "example": "To find the total number of fireworks Hannah will see, we need to calculate the fireworks from the city display and the fireworks from her backyard, then add them together.\n\n**Step 1: Calculate the fireworks from the city display.**\nThe city display consists of 15 boxes, and each box contains 20 fireworks.\n$$ \\text{City Fireworks} = 15 \\times 20 = 300 $$\n\n**Step 2: Calculate the fireworks from Hannah's backyard.**\nHannah sets off 3 boxes, and each box contains 5 fireworks.\n$$ \\text{Backyard Fireworks} = 3 \\times 5 = 15 $$\n\n**Step 3: Calculate the total number of fireworks.**\nAdd the fireworks "
+ },
+ "sampled": {
+  "pass@1": 0.529296875,
+  "frac_mixed": 0.609375,
+  "frac_all_wrong": 0.171875,
+  "frac_all_right": 0.21875,
+  "tokens_per_s": 2234.039478200191,
+  "sec_per_64_rollouts": 8.932026579976082
+ },
+ "throughput": {
+  "8": {
+   "sec": 4.107666492462158,
+   "tokens_per_s": 484.21652625643964
+  },
+  "32": {
+   "sec": 6.13864803314209,
+   "tokens_per_s": 1286.9283199408903
+  },
+  "64": {
+   "sec": 6.447696685791016,
+   "tokens_per_s": 2401.943012320845
+  },
+  "128": {
+   "sec": 8.426716566085815,
+   "tokens_per_s": 3585.3822497834226
+  }
+ },
+ "train_step": {
+  "seq_len": 354,
+  "batch": 64,
+  "baseline": {
+   "sec": 4.694137096405029,
+   "peak_gb": 18.926201856
+  },
+  "gated": {
+   "sec": 9.308146476745605,
+   "peak_gb": 24.563866112
+  },
+  "confidence_percentiles": {
+   "9": [
+    0.063,
+    0.146,
+    0.382,
+    0.759,
+    0.981
+   ],
+   "10": [
+    0.053,
+    0.161,
+    0.348,
+    0.734,
+    0.983
+   ],
+   "11": [
+    0.033,
+    0.09,
+    0.249,
+    0.591,
+    0.966
+   ],
+   "12": [
+    0.034,
+    0.074,
+    0.146,
+    0.402,
+    0.94
+   ],
+   "13": [
+    0.03,
+    0.071,
+    0.183,
+    0.458,
+    0.913
+   ],
+   "14": [
+    0.018,
+    0.042,
+    0.11,
+    0.344,
+    0.94
+   ],
+   "15": [
+    0.005,
+    0.009,
+    0.025,
+    0.217,
+    0.755
+   ],
+   "16": [
+    0.005,
+    0.01,
+    0.033,
+    0.208,
+    0.884
+   ],
+   "17": [
+    0.004,
+    0.008,
+    0.029,
+    0.233,
+    0.9
+   ],
+   "18": [
+    0.004,
+    0.009,
+    0.034,
+    0.4,
+    0.952
+   ]
+  }
+ }
+}
