@@ -56,11 +56,11 @@ def main():
     t0 = time.perf_counter()
 
     def evaluate(step):
-        ev = suite.run()
-        ev.update(kind="eval", step=step, wall=time.perf_counter() - t0)
+        ev, samples = suite.run()
+        ev.update(kind="eval", step=step, wall=time.perf_counter() - t0, samples=samples)
         log.write(json.dumps(ev) + "\n")
         log.flush()
-        print(f"EVAL step={step} " + " ".join(f"{k}={v:.3f}" for k, v in ev.items() if k not in ("kind", "step", "wall")), flush=True)
+        print(f"EVAL step={step} " + " ".join(f"{k}={v:.3f}" for k, v in ev.items() if isinstance(v, float) and k != "wall"), flush=True)
 
     for step in range(args.steps):
         if suite and step % args.eval_every == 0:
@@ -76,7 +76,10 @@ def main():
               + (f" c_med={st['gate_c_median']:.3f}" if cfg.gated else ""), flush=True)
     if suite:
         evaluate(args.steps)
-    print(f"DONE wall={time.perf_counter() - t0:.0f}s", flush=True)
+    ckpt = odir / "final"  # bf16 weights for post-hoc analysis (gitignored)
+    lm.hf.save_pretrained(ckpt)
+    lm.tok.save_pretrained(ckpt)
+    print(f"DONE wall={time.perf_counter() - t0:.0f}s saved={ckpt}", flush=True)
 
 
 if __name__ == "__main__":

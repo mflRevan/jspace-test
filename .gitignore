@@ -15,3 +15,4 @@ results/**/slice_*.html
 # RL pilot / smoke runs
 results/19_rl_gsm8k/**/*_pilot/
 results/19_rl_gsm8k/**/*_smoke/
+results/19_rl_gsm8k/**/final/

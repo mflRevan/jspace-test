@@ -93,13 +93,16 @@ class EvalSuite:
         lm.hf.train(was_training)
         return correct / len(self.mmlu)
 
-    def run(self) -> dict:
-        res = {}
+    def run(self, n_samples: int = 3) -> tuple[dict, dict]:
+        """Returns (metrics, sample outputs per eval set)."""
+        res, samples = {}, {}
         texts = greedy(self.lm, [p for p, _ in self.gsm8k], 512)
         res["gsm8k"] = float(np.mean([gsm8k_reward(t, g) for t, (_, g) in zip(texts, self.gsm8k, strict=True)]))
         res["gsm8k_mean_len"] = float(np.mean([len(self.lm.tok.encode(t)) for t in texts]))
+        samples["gsm8k"] = [{"gold": g, "out": t} for t, (_, g) in zip(texts[:n_samples], self.gsm8k, strict=False)]
         res["mmlu"] = self.mmlu_acc()
         for name, items in self.facts.items():
             texts = greedy(self.lm, [p for p, _ in items], 8)
             res[name] = float(np.mean([t.strip().lower().startswith(a.lower()) for t, (_, a) in zip(texts, items, strict=True)]))
-        return res
+            samples[name] = [{"prompt": p[-80:], "gold": a, "out": t} for t, (p, a) in zip(texts[:n_samples], items, strict=False)]
+        return res, samples
