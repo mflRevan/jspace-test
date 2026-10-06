@@ -84,10 +84,10 @@ class RLTrainer:
 
     def step(self, prompts: list[str], answers: list[str]) -> dict:
         cfg, lm = self.cfg, self.lm
-        t0 = time.time()
+        t0 = time.perf_counter()
         ro = rollout(lm, prompts, n=cfg.samples, max_new_tokens=cfg.max_new_tokens, temperature=cfg.temperature,
                      capture_layers=self.band if cfg.gated else None, k=cfg.k)
-        t_roll = time.time() - t0
+        t_roll = time.perf_counter() - t0
         r = np.array([self.reward_fn(t, answers[i // cfg.samples]) for i, t in enumerate(ro.texts)], dtype=np.float32)
         adv = (r.reshape(-1, cfg.samples) - r.reshape(-1, cfg.samples).mean(1, keepdims=True)).reshape(-1)
         active = np.nonzero(adv)[0]
@@ -99,7 +99,7 @@ class RLTrainer:
             c = torch.stack([s.c[ro.attn.bool()].float() for s in ro.selection.values()])
             stats["gate_c_mean"] = float(c.mean())
             stats["gate_c_median"] = float(c.median())
-        t1 = time.time()
+        t1 = time.perf_counter()
         self.opt.zero_grad(set_to_none=True)
         gnorm = 0.0
         if len(active):
@@ -120,7 +120,7 @@ class RLTrainer:
             self.opt.step()
             self.opt.zero_grad(set_to_none=True)
             lm.hf.eval()
-        stats.update(grad_norm=gnorm, n_active=int(len(active)), t_train=time.time() - t1)
+        stats.update(grad_norm=gnorm, n_active=int(len(active)), t_train=time.perf_counter() - t1)
         return stats
 
 

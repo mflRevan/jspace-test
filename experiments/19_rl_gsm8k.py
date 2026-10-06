@@ -53,11 +53,11 @@ def main():
     odir = out_dir(f"19_rl_gsm8k/{args.model}/{run}")
     (odir / "meta.json").write_text(json.dumps(run_meta(lm, args=vars(args), config=vars(cfg)), indent=1))
     log = (odir / "log.jsonl").open("w")
-    t0 = time.time()
+    t0 = time.perf_counter()
 
     def evaluate(step):
         ev = suite.run()
-        ev.update(kind="eval", step=step, wall=time.time() - t0)
+        ev.update(kind="eval", step=step, wall=time.perf_counter() - t0)
         log.write(json.dumps(ev) + "\n")
         log.flush()
         print(f"EVAL step={step} " + " ".join(f"{k}={v:.3f}" for k, v in ev.items() if k not in ("kind", "step", "wall")), flush=True)
@@ -68,7 +68,7 @@ def main():
         idx = order[(step * cfg.prompts_per_step) % len(order):][: cfg.prompts_per_step]
         probs = [train[int(i)] for i in idx]
         st = trainer.step([lm.chat(p["question"] + GSM8K_INSTR) for p in probs], [gsm8k_gold(p["answer"]) for p in probs])
-        st.update(kind="train", step=step, wall=time.time() - t0)
+        st.update(kind="train", step=step, wall=time.perf_counter() - t0)
         log.write(json.dumps(st) + "\n")
         log.flush()
         print(f"step={step} reward={st['reward']:.3f} len={st['mean_len']:.0f} trunc={st['truncated']:.2f} "
@@ -76,7 +76,7 @@ def main():
               + (f" c_med={st['gate_c_median']:.3f}" if cfg.gated else ""), flush=True)
     if suite:
         evaluate(args.steps)
-    print(f"DONE wall={time.time() - t0:.0f}s", flush=True)
+    print(f"DONE wall={time.perf_counter() - t0:.0f}s", flush=True)
 
 
 if __name__ == "__main__":
